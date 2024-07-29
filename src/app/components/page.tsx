@@ -41,7 +41,7 @@ export default function ComponentPage() {
         <div
           className={clsx(
             'layout min-h-screen py-20',
-            mode === 'dark' ? 'text-white' : 'text-black'
+            mode === 'dark' ? 'text-white' : 'text-black',
           )}
         >
           <h1>Built-in Components</h1>
@@ -76,7 +76,7 @@ export default function ComponentPage() {
                     mode === 'dark'
                       ? 'bg-dark border border-gray-600'
                       : 'border-gray-300 bg-white',
-                    'focus:border-primary-400 focus:ring-primary-400 focus:outline-none focus:ring'
+                    'focus:border-primary-400 focus:ring-primary-400 focus:outline-none focus:ring',
                   )}
                   onChange={(e) => setColor(e.target.value as Color)}
                 >
@@ -86,9 +86,6 @@ export default function ComponentPage() {
                     </option>
                   ))}
                 </select>
-                <ButtonLink href='https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/blob/main/src/styles/colors.css'>
-                  Check list of colors
-                </ButtonLink>
               </div>
               <div className='flex flex-wrap gap-2 text-xs font-medium'>
                 <div className='bg-primary-50 flex h-10 w-10 items-center justify-center rounded text-black'>
