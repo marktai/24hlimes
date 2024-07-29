@@ -85,7 +85,7 @@ export default function Component() {
   );
 }
 
-function MenuIcon(props) {
+function MenuIcon(props: { className: string }) {
   return (
     <svg
       {...props}
