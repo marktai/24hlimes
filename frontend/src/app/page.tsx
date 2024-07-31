@@ -172,7 +172,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className='border-b-2 py-8 sm:py-20 px-14 md:px-40'>
+          <div className='border-b-2 py-8 sm:py-20 px-14 md:px-40' id='quotes'>
             <div className='w-full bg-accent p-8 sm:p-16 sm:flex'>
               <img
                 src='/svg/quote.svg'

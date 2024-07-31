@@ -26,6 +26,10 @@ export default function Component() {
               <span className='sr-only'>Toggle navigation menu</span>
             </Button>
           </SheetTrigger>
+          <text className='font-bold pl-4 sm:hidden'>
+            <text className='text-primary'>&#123;</text> Realistic Code{' '}
+            <text className='text-primary'>&#125;</text>
+          </text>
           <SheetContent side='left'>
             <Link href='#' prefetch={false}>
               <text className='font-bold'>
