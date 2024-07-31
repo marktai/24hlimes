@@ -6,6 +6,7 @@ import { faRobot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import * as React from 'react';
 import '@/lib/env';
 
@@ -27,11 +28,11 @@ export default function HomePage() {
       </Head>
       <Header />
       <section>
-        <div className='layout relative flex flex-col sm:pt-12 w-full max-w-full'>
-          <div className='border-b-2 grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-16 pt-5 md:pt-20 py-20 px-14 md:px-40'>
+        <div className='layout relative flex flex-col sm:pt-6 lg:pt-12 w-full max-w-full'>
+          <div className='border-b-2 grid md:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-16 pt-5 md:pt-20 py-8 sm:py-20 px-14 md:px-40'>
             <div className='items-center flex'>
               <div>
-                <div className='w-full'>
+                <div className='w-full sm:pb-8'>
                   <text className='font-bold text-4xl sm:text-6xl	'>
                     Hire quality talent efficiently
                   </text>
@@ -48,26 +49,28 @@ export default function HomePage() {
             </div>
             <div className='h-96 w-full bg-blue-600'></div>
           </div>
-          <div className='border-b-2 py-4 sm:py-20 px-14 md:px-40'>
-            <div className='w-full text-center p-8'>
+          <div className='border-b-2 py-8 sm:py-20 px-14 md:px-40'>
+            <div className='w-full text-center px-8 pb-4 sm:pb-8'>
               <text className='font-bold text-2xl sm:text-3xl'>
                 Why use Realistic Code?
               </text>
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-3 gap-6'>
-              <div>
-                <div className=''>
+            <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-6'>
+              <div className='sm:order-1'>
+                <div className='w-full flex justify-center sm:justify-normal'>
                   <FontAwesomeIcon
                     icon={faHourglassHalf}
                     className='text-primary h-8 sm:h-12'
                   />
                 </div>
-                <div className='my-4'>
+                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal'>
                   <text className='font-bold text-lg sm:text-xl'>
                     Save your team time
                   </text>
                 </div>
-                <div className='my-4'>
+              </div>
+              <div className='sm:order-4'>
+                <div className='mb-4'>
                   <text>Need </text>
                   <text className='font-bold'>fewer onsites</text>
                   <text>
@@ -78,33 +81,41 @@ export default function HomePage() {
                   <text className='font-bold'>good</text>
                 </div>
               </div>
-              <div>
-                <FontAwesomeIcon
-                  icon={faFaceSmileBeam}
-                  className='text-primary h-8 sm:h-12'
-                />
-                <div className='my-4'>
-                  <text className='font-bold text-lg sm:ttext-xl'>
+              <div className='sm:order-2'>
+                <div className='w-full flex justify-center sm:justify-normal'>
+                  <FontAwesomeIcon
+                    icon={faFaceSmileBeam}
+                    className='text-primary h-8 sm:h-12'
+                  />
+                </div>
+                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal'>
+                  <text className='font-bold text-lg sm:text-xl'>
                     Engage candidates
                   </text>
                 </div>
-                <div className='my-4'>
+              </div>
+              <div className='sm:order-5'>
+                <div className='mb-4'>
                   <text>Make candidates </text>
                   <text className='font-bold'>excited</text>
                   <text> about your company via your interview process</text>
                 </div>
               </div>
-              <div>
-                <FontAwesomeIcon
-                  icon={faRobot}
-                  className='text-primary h-8 sm:h-12'
-                />
-                <div className='my-4'>
-                  <text className='font-bold text-lg sm:ttext-xl'>
+              <div className='sm:order-3'>
+                <div className='w-full flex justify-center sm:justify-normal'>
+                  <FontAwesomeIcon
+                    icon={faRobot}
+                    className='text-primary h-8 sm:h-12'
+                  />
+                </div>
+                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal'>
+                  <text className='font-bold text-lg sm:text-xl'>
                     Future proof your process
                   </text>
                 </div>
-                <div className='my-4'>
+              </div>
+              <div className='sm:order-6'>
+                <div className='mb-4'>
                   <text className='font-bold'>AI proof</text>
                   <text>
                     {' '}
@@ -115,22 +126,26 @@ export default function HomePage() {
               </div>
             </div>
             <div className='sm:flex items-center justify-center w-full'>
-              <ButtonLink
-                className='mr-4'
-                href='https://schedule.marktai.com'
-                variant='accent'
-              >
-                <text className='font-semibold'>Schedule demo</text>
-              </ButtonLink>
-              <ButtonLink
-                href='https://www.marktai.com/#contact'
-                variant='light'
-              >
-                <text className='font-semibold'>Contact us</text>
-              </ButtonLink>
+              <div className='flex w-full sm:w-auto items-center justify-center'>
+                <ButtonLink
+                  className='sm:mr-4 mb-4 sm:mb-0'
+                  href='https://schedule.marktai.com'
+                  variant='accent'
+                >
+                  <text className='font-semibold'>Schedule demo</text>
+                </ButtonLink>
+              </div>
+              <div className='flex w-full sm:w-auto items-center justify-center'>
+                <ButtonLink
+                  href='https://www.marktai.com/#contact'
+                  variant='light'
+                >
+                  <text className='font-semibold'>Contact us</text>
+                </ButtonLink>
+              </div>
             </div>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-16  border-b-2 py-20 px-14 md:px-40'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-16  border-b-2 py-8 sm:py-20 px-14 md:px-40'>
             <div className='h-96 w-full bg-orange-600'></div>
             <div className='items-center flex'>
               <div>
@@ -142,11 +157,11 @@ export default function HomePage() {
                     We'll do the work for you
                   </text>
                 </div>
-                <div>
+                <div className='sm:pb-4'>
                   <text>
                     We screen a candidate and only impressive candidates proceed
                     to the onsite, based on your criteria priority and target
-                    candidate pass rate
+                    candidate pass rate.
                   </text>
                 </div>
                 <ButtonLink
@@ -158,11 +173,11 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className='border-b-2 py-20 px-14 md:px-40'>
-            <div className='w-full bg-accent p-16 sm:flex'>
+          <div className='border-b-2 py-8 sm:py-20 px-14 md:px-40'>
+            <div className='w-full bg-accent p-8 sm:p-16 sm:flex'>
               <Image
                 src='/svg/quote.svg'
-                alt='Airbnb'
+                alt=''
                 height='55'
                 width='45'
                 className='mx-4 h-14'
@@ -181,58 +196,64 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className='py-20 px-4 md:px-20'>
-            <div className='flex w-full items-center justify-center mb-12 p-4 md:p-0'>
+          <div className='py-8 sm:py-20 px-4 md:px-20'>
+            <div className='flex w-full items-center justify-center mb-4 sm:mb-12 p-4 md:p-0'>
               <text className='font-bold text-xl sm:text-4xl text-center'>
                 Brainstormed by engineers at top companies
               </text>
             </div>
-            <div className='md:flex w-full items-center justify-center text-center content-center	'>
-              <div className='flex py-4'>
-                <Image
-                  src='/images/logos/airbnb.png'
-                  alt='Airbnb'
-                  height='40'
-                  width='127'
-                  className='mx-4'
-                />
-                <Image
-                  src='/images/logos/anthropic.png'
-                  alt='Anthropic'
-                  height='24'
-                  width='214'
-                  className='mx-4'
-                />
-                <Image
-                  src='/images/logos/blend.png'
-                  alt='Blend'
-                  height='40'
-                  width='97'
-                  className='mx-4'
-                />
+            <div className='lg:flex w-full items-center justify-center text-center content-center'>
+              <div className='flex py-4 items-center justify-center'>
+                <div className='w-[63px] h-[20px] sm:w-[127px] sm:h-[40px] mx-4'>
+                  <Image
+                    src='/images/logos/airbnb.png'
+                    alt='Airbnb'
+                    height='40'
+                    width='127'
+                  />
+                </div>
+                <div className='w-[107px] h-[12px] sm:w-[214px] sm:h-[24px] mx-4'>
+                  <Image
+                    src='/images/logos/anthropic.png'
+                    alt='Anthropic'
+                    height='24'
+                    width='214'
+                  />
+                </div>
+                <div className='w-[48px] h-[20px] sm:w-[97px] sm:h-[40px] mx-4'>
+                  <Image
+                    src='/images/logos/blend.png'
+                    alt='Blend'
+                    height='40'
+                    width='97'
+                  />
+                </div>
               </div>
-              <div className='flex py-4'>
-                <Image
-                  src='/images/logos/cloudkitchens.png'
-                  alt='CloudKitchens'
-                  height='24'
-                  width='212'
-                  className='mx-4'
-                />
-                <Image
-                  src='/images/logos/pave.png'
-                  alt='Pave'
-                  height='32'
-                  width='134'
-                  className='mx-4'
-                />
-                <Image
-                  src='/images/logos/uber.png'
-                  alt='Uber'
-                  height='32'
-                  width='92'
-                  className='mx-4'
-                />
+              <div className='flex py-4 items-center justify-center'>
+                <div className='w-[106px] h-[12px] sm:w-[212px] sm:h-[24px] mx-4'>
+                  <Image
+                    src='/images/logos/cloudkitchens.png'
+                    alt='CloudKitchens'
+                    height='24'
+                    width='212'
+                  />
+                </div>
+                <div className='w-[67px] h-[16px] sm:w-[134px] sm:h-[32px] mx-4'>
+                  <Image
+                    src='/images/logos/pave.png'
+                    alt='Pave'
+                    height='32'
+                    width='134'
+                  />
+                </div>
+                <div className='w-[46px] h-[16px] sm:w-[92px] sm:h-[32px] mx-4'>
+                  <Image
+                    src='/images/logos/uber.png'
+                    alt='Uber'
+                    height='32'
+                    width='92'
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -273,8 +294,22 @@ export default function HomePage() {
               </div>
             </div>
             <div className='flex float-right'>
-              <div className='px-10'>Pricing</div>
-              <div>Company</div>
+              <div className='px-10'>
+                <Link
+                  href='https://venmo.com/?txn=pay&audience=friends&recipients=mark-tai&amount=5&note=Realistic%20Code'
+                  className='font-semibold'
+                >
+                  Pricing
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href='https://RealisticCode.com'
+                  className='font-semibold'
+                >
+                  Company
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ import ButtonLink from './links/ButtonLink';
 
 export default function Component() {
   return (
-    <div className='container mx-0 w-full max-w-full px-4 md:px-6 lg:px-8 md:border-b-2'>
+    <div className='container mx-0 w-full max-w-full px-4 md:px-6 lg:px-8 sm:border-b-2'>
       <header className='flex h-20 w-full shrink-0 items-center px-4 md:px-6'>
         <Sheet>
           <SheetTrigger asChild>
@@ -35,7 +35,7 @@ export default function Component() {
             </Link>
             <div className='grid gap-4 py-6'>
               <Link
-                href='#'
+                href='https://venmo.com/?txn=pay&audience=friends&recipients=mark-tai&amount=5&note=Realistic%20Code'
                 className='flex w-full items-center py-2 text-lg font-semibold'
                 prefetch={false}
               >
@@ -63,7 +63,11 @@ export default function Component() {
         <NavigationMenu className='hidden sm:flex ml-auto'>
           <NavigationMenuList>
             <NavigationMenuLink asChild>
-              <Link href='#' className='font-semibold' prefetch={false}>
+              <Link
+                href='https://venmo.com/?txn=pay&audience=friends&recipients=mark-tai&amount=5&note=Realistic%20Code'
+                className='font-semibold'
+                prefetch={false}
+              >
                 Pricing
               </Link>
             </NavigationMenuLink>
