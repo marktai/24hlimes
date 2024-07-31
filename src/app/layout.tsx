@@ -1,12 +1,14 @@
 import { Metadata } from 'next';
+import { DM_Sans } from 'next/font/google';
 import * as React from 'react';
 
 import '@/styles/globals.css';
 
 import { siteConfig } from '@/constant/config';
 
-// !STARTERCONF Change these default meta
-// !STARTERCONF Look at @/constant/config to change them
+// If loading a variable font, you don't need to specify the font weight
+const dm_sans = DM_Sans({ subsets: ['latin'] });
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -47,7 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body className={dm_sans.className}>{children}</body>
     </html>
   );
 }

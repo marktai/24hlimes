@@ -14,6 +14,7 @@ const ButtonLinkVariant = [
   'ghost',
   'light',
   'dark',
+  'accent',
 ] as const;
 const ButtonLinkSize = ['sm', 'base'] as const;
 
@@ -49,7 +50,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         ref={ref}
         {...rest}
         className={cn(
-          'inline-flex items-center rounded font-medium',
+          'inline-flex items-center rounded-3xl font-medium ',
           'focus-visible:ring-primary-500 focus:outline-none focus-visible:ring',
           'shadow-sm',
           'transition-colors duration-75',
@@ -91,6 +92,11 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             variant === 'dark' && [
               'bg-gray-900 text-white',
               'border border-gray-600',
+              'hover:bg-gray-800 active:bg-gray-700 disabled:bg-gray-700',
+            ],
+            variant === 'accent' && [
+              'bg-accent text-black',
+              // 'border border-gray-600',
               'hover:bg-gray-800 active:bg-gray-700 disabled:bg-gray-700',
             ],
           ],

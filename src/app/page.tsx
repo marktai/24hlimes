@@ -1,3 +1,9 @@
+import {
+  faFaceSmileBeam,
+  faHourglassHalf,
+} from '@fortawesome/free-regular-svg-icons';
+import { faRobot } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Head from 'next/head';
 import Image from 'next/image';
 import * as React from 'react';
@@ -5,7 +11,6 @@ import '@/lib/env';
 
 import Header from '@/components/Header';
 import ButtonLink from '@/components/links/ButtonLink';
-
 /**
  * SVGR Support
  * Caveat: No React Props Type.
@@ -16,14 +21,14 @@ import ButtonLink from '@/components/links/ButtonLink';
 
 export default function HomePage() {
   return (
-    <main className='bg-[#F1F1F1]'>
+    <main className='bg-background'>
       <Head>
         <title>Realistic Code</title>
       </Head>
       <Header />
       <section>
-        <div className='layout relative flex flex-col pt-12'>
-          <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-16  border-b-2 py-20 sm:px-20 md:px-40'>
+        <div className='layout relative flex flex-col pt-12 w-full max-w-full'>
+          <div className='border-b-2 grid sm:grid-cols-1 md:grid-cols-2 gap-16 pt-5 md:pt-20 py-20 px-14 md:px-40'>
             <div className='items-center flex'>
               <div>
                 <div className='w-full'>
@@ -43,15 +48,20 @@ export default function HomePage() {
             </div>
             <div className='h-96 w-full bg-blue-600'></div>
           </div>
-          <div className='border-b-2 py-20 sm:px-20 md:px-40'>
-            <div className='w-full text-center'>
+          <div className='border-b-2 py-20 px-14 md:px-40'>
+            <div className='w-full text-center p-8'>
               <text className='font-bold text-3xl'>
                 Why use Realistic Code?
               </text>
             </div>
             <div className='grid grid-cols-3 gap-6'>
               <div>
-                <div className='w-12 h-12 bg-blue-600'></div>
+                <div className=''>
+                  <FontAwesomeIcon
+                    icon={faHourglassHalf}
+                    className='text-primary h-12'
+                  />
+                </div>
                 <div className='my-4'>
                   <text className='font-bold text-xl'>Save your team time</text>
                 </div>
@@ -67,7 +77,10 @@ export default function HomePage() {
                 </div>
               </div>
               <div>
-                <div className='w-12 h-12 bg-blue-600'></div>
+                <FontAwesomeIcon
+                  icon={faFaceSmileBeam}
+                  className='text-primary h-12'
+                />
                 <div className='my-4'>
                   <text className='font-bold text-xl'>Engage candidates</text>
                 </div>
@@ -78,7 +91,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div>
-                <div className='w-12 h-12 bg-blue-600'></div>
+                <FontAwesomeIcon icon={faRobot} className='text-primary h-12' />
                 <div className='my-4'>
                   <text className='font-bold text-xl'>
                     Future proof your process
@@ -95,15 +108,22 @@ export default function HomePage() {
               </div>
             </div>
             <div className='flex items-center justify-center w-full'>
-              <ButtonLink className='mx-4' href='/components' variant='dark'>
-                Schedule demo
+              <ButtonLink
+                className='mx-4'
+                href='https://schedule.marktai.com'
+                variant='accent'
+              >
+                <text className='font-semibold'>Schedule demo</text>
               </ButtonLink>
-              <ButtonLink href='/components' variant='light'>
-                Contact us
+              <ButtonLink
+                href='https://www.marktai.com/#contact'
+                variant='light'
+              >
+                <text className='font-semibold'>Contact us</text>
               </ButtonLink>
             </div>
           </div>
-          <div className='grid grid-cols-2 gap-16  border-b-2 py-20 sm:px-20 md:px-40'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-16  border-b-2 py-20 px-14 md:px-40'>
             <div className='h-96 w-full bg-orange-600'></div>
             <div className='items-center flex'>
               <div>
@@ -122,15 +142,24 @@ export default function HomePage() {
                     candidate pass rate
                   </text>
                 </div>
-                <ButtonLink href='/components' variant='dark'>
-                  Schedule demo
+                <ButtonLink
+                  href='https://schedule.marktai.com'
+                  variant='accent'
+                >
+                  <text className='font-semibold'>Schedule demo</text>
                 </ButtonLink>
               </div>
             </div>
           </div>
-          <div className='border-b-2 py-20 sm:px-20 md:px-40'>
-            <div className='w-full bg-green-300 p-16 flex'>
-              <div className='h-8 w-8 mr-8 bg-blue-300'>"</div>
+          <div className='border-b-2 py-20 px-14 md:px-40'>
+            <div className='w-full bg-accent p-16 sm:flex'>
+              <Image
+                src='/svg/quote.svg'
+                alt='Airbnb'
+                height='55'
+                width='45'
+                className='mx-4 h-14'
+              />
               <div>
                 <div>
                   <text className='font-bold text-4xl'>
@@ -145,7 +174,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className='py-20 sm:px-10 md:px-20'>
+          <div className='py-20 px-14 md:px-20'>
             <div className='flex w-full items-center justify-center mb-12'>
               <text className='font-bold text-4xl'>
                 Brainstormed by engineers at top companies
@@ -197,7 +226,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className='p-0 bg-blue-500'>
-            <div className="w-full bg-[url('https://www.marktai.com/download//RealisticCode/star_background.png')] bg-cover bg-center px-40 py-8 min-h-40 lg:min-h-80 text-center flex items-center justify-center ">
+            <div className="w-full bg-[url('https://www.marktai.com/download//RealisticCode/star_background.png')] bg-cover bg-center px-14 md:px-40 py-8 min-h-40 lg:min-h-80 text-center flex items-center justify-center ">
               <div>
                 <div className='sm:mb-2 md:mb-4'>
                   <text className='font-bold sm:text-2xl md:text-4xl text-white'>
@@ -210,17 +239,23 @@ export default function HomePage() {
                   </text>
                 </div>
                 <div>
-                  <ButtonLink href='/components' variant='dark'>
-                    Schedule demo
+                  <ButtonLink
+                    href='https://schedule.marktai.com'
+                    variant='accent'
+                  >
+                    <text className='font-semibold'>Schedule demo</text>
                   </ButtonLink>
                 </div>
               </div>
             </div>
           </div>
-          <div className='bg-[#00071A] w-full text-white sm:px-20 md:px-40 py-10'>
+          <div className='bg-[#00071A] w-full text-white px-14 md:px-40 py-10'>
             <div className='md:w-60 float-left'>
               <div>
-                <text>&#123; Realistic Code &#125;</text>
+                <text className='font-bold'>
+                  <text className='text-primary'>&#123;</text> Realistic Code{' '}
+                  <text className='text-primary'>&#125;</text>
+                </text>
               </div>
               <div>
                 <text>© 2024 marktai.com</text>

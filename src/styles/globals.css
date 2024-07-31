@@ -4,19 +4,19 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0, 0%, 95%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: #11205a;
+    --primary: 223, 100%, 55%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
+    --accent: 72, 80%, 69%;
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -29,6 +29,29 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+
+    --tw-color-primary-50: '#edf5ff';
+    --tw-color-primary-100: '#d7e8ff';
+    --tw-color-primary-200: '#b9d8ff';
+    --tw-color-primary-300: '#88c0ff';
+    --tw-color-primary-400: '#509dff';
+    --tw-color-primary-500: '#2876ff';
+    --tw-color-primary-600: '#1a5aff';
+    --tw-color-primary-700: '#0a3deb';
+    --tw-color-primary-800: '#0f32be';
+    --tw-color-primary-900: '#133195';
+    --tw-color-primary-950: '#11205a';
+    --color-primary-50: rgb(var(--tw-color-primary-50));
+    --color-primary-100: rgb(var(--tw-color-primary-100));
+    --color-primary-200: rgb(var(--tw-color-primary-200));
+    --color-primary-300: rgb(var(--tw-color-primary-300));
+    --color-primary-400: rgb(var(--tw-color-primary-400));
+    --color-primary-500: rgb(var(--tw-color-primary-500));
+    --color-primary-600: rgb(var(--tw-color-primary-600));
+    --color-primary-700: rgb(var(--tw-color-primary-700));
+    --color-primary-800: rgb(var(--tw-color-primary-800));
+    --color-primary-900: rgb(var(--tw-color-primary-900));
+    --color-primary-950: rgb(var(--tw-color-primary-950));
   }
 
   .dark {

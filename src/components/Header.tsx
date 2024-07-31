@@ -21,16 +21,19 @@ export default function Component() {
       <header className='flex h-20 w-full shrink-0 items-center px-4 md:px-6'>
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant='outline' className='lg:hidden'>
+            <Button variant='outline' className='sm:hidden'>
               <MenuIcon className='h-6 w-6' />
               <span className='sr-only'>Toggle navigation menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent side='left'>
             <Link href='#' prefetch={false}>
-              <text>&#123; Realistic Code &#125;</text>
+              <text className='font-bold'>
+                <text className='text-primary'>&#123;</text> Realistic Code{' '}
+                <text className='text-primary'>&#125;</text>
+              </text>
             </Link>
-            <div className='grid gap-2 py-6'>
+            <div className='grid gap-4 py-6'>
               <Link
                 href='#'
                 className='flex w-full items-center py-2 text-lg font-semibold'
@@ -39,44 +42,43 @@ export default function Component() {
                 Pricing
               </Link>
               <Link
-                href='#'
+                href='https://www.marktai.com'
                 className='flex w-full items-center py-2 text-lg font-semibold'
                 prefetch={false}
               >
                 Blog
               </Link>
-              <ButtonLink href='/components' variant='dark'>
-                Schedule demo
+              <ButtonLink href='https://schedule.marktai.com' variant='accent'>
+                <text className='font-semibold'>Schedule demo</text>
               </ButtonLink>
             </div>
           </SheetContent>
         </Sheet>
-        <Link href='#' className='mr-6 hidden lg:flex' prefetch={false}>
-          <span>&#123; Realistic Code &#125;</span>
+        <Link href='#' className='mr-6 hidden sm:flex' prefetch={false}>
+          <text className='font-bold'>
+            <text className='text-primary'>&#123;</text> Realistic Code{' '}
+            <text className='text-primary'>&#125;</text>
+          </text>
         </Link>
-        <NavigationMenu className='hidden lg:flex ml-auto'>
+        <NavigationMenu className='hidden sm:flex ml-auto'>
           <NavigationMenuList>
             <NavigationMenuLink asChild>
-              <Link
-                href='#'
-                className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50'
-                prefetch={false}
-              >
+              <Link href='#' className='font-semibold' prefetch={false}>
                 Pricing
               </Link>
             </NavigationMenuLink>
             <NavigationMenuLink asChild>
               <Link
-                href='#'
-                className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50'
+                href='https://www.marktai.com'
+                className='font-semibold'
                 prefetch={false}
               >
                 Blog
               </Link>
             </NavigationMenuLink>
 
-            <ButtonLink href='/components' variant='dark'>
-              Schedule demo
+            <ButtonLink href='https://schedule.marktai.com' variant='accent'>
+              <text className='font-semibold'>Schedule demo</text>
             </ButtonLink>
           </NavigationMenuList>
         </NavigationMenu>
