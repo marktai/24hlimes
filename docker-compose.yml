@@ -3,10 +3,10 @@ version: '3.3'
 services:
   frontend:
     image: realisticcode/frontend:latest
-    build: .
+    build: ./frontend
     volumes:
-      - ./src:/app/src
-      - ./build:/build
+      - ./frontend/src:/app/src
+      - ./frontend/build:/build
     ports:
       - "12380:3000"
     restart: always
@@ -14,7 +14,7 @@ services:
     image: realisticcode/nginx:latest
     build: ./nginx
     volumes:
-      - ./out/:/frontend/out
+      - ./frontend/out/:/frontend/out
     ports:
       - "80:80"
       - "443:443"

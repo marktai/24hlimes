@@ -5,7 +5,6 @@ import {
 import { faRobot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
 import '@/lib/env';
@@ -175,7 +174,7 @@ export default function HomePage() {
           </div>
           <div className='border-b-2 py-8 sm:py-20 px-14 md:px-40'>
             <div className='w-full bg-accent p-8 sm:p-16 sm:flex'>
-              <Image
+              <img
                 src='/svg/quote.svg'
                 alt=''
                 height='55'
@@ -205,7 +204,7 @@ export default function HomePage() {
             <div className='lg:flex w-full items-center justify-center text-center content-center'>
               <div className='flex py-4 items-center justify-center'>
                 <div className='w-[63px] h-[20px] sm:w-[127px] sm:h-[40px] mx-4'>
-                  <Image
+                  <img
                     src='/images/logos/airbnb.png'
                     alt='Airbnb'
                     height='40'
@@ -213,7 +212,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div className='w-[107px] h-[12px] sm:w-[214px] sm:h-[24px] mx-4'>
-                  <Image
+                  <img
                     src='/images/logos/anthropic.png'
                     alt='Anthropic'
                     height='24'
@@ -221,7 +220,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div className='w-[48px] h-[20px] sm:w-[97px] sm:h-[40px] mx-4'>
-                  <Image
+                  <img
                     src='/images/logos/blend.png'
                     alt='Blend'
                     height='40'
@@ -231,7 +230,7 @@ export default function HomePage() {
               </div>
               <div className='flex py-4 items-center justify-center'>
                 <div className='w-[106px] h-[12px] sm:w-[212px] sm:h-[24px] mx-4'>
-                  <Image
+                  <img
                     src='/images/logos/cloudkitchens.png'
                     alt='CloudKitchens'
                     height='24'
@@ -239,7 +238,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div className='w-[67px] h-[16px] sm:w-[134px] sm:h-[32px] mx-4'>
-                  <Image
+                  <img
                     src='/images/logos/pave.png'
                     alt='Pave'
                     height='32'
@@ -247,7 +246,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div className='w-[46px] h-[16px] sm:w-[92px] sm:h-[32px] mx-4'>
-                  <Image
+                  <img
                     src='/images/logos/uber.png'
                     alt='Uber'
                     height='32'
