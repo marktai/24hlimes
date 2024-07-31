@@ -9,3 +9,4 @@ data
 dataold
 data_copy
 *.bak
+out.tar.gz

@@ -257,14 +257,14 @@ export default function HomePage() {
             </div>
           </div>
           <div className='p-0 bg-blue-500'>
-            <div className="w-full bg-[url('https://www.marktai.com/download//RealisticCode/star_background.png')] bg-cover bg-center px-14 md:px-40 py-8 min-h-40 lg:min-h-80 text-center flex items-center justify-center ">
-              <div>
-                <div className='sm:mb-2 md:mb-4'>
+            <div className="w-full bg-[url('https://www.marktai.com/download//RealisticCode/star_background.png')] bg-cover bg-center px-14 md:px-40 py-8 min-h-40 lg:min-h-80 text-center flex items-center justify-center">
+              <div className='w-full flex flex-col content-center items-center justify-center'>
+                <div className='sm:mb-2 md:mb-4 max-w-[40vw]'>
                   <text className='font-bold sm:text-2xl md:text-4xl text-white'>
                     Hire effeciently
                   </text>
                 </div>
-                <div className='sm:mb-4 md:mb-10 max-w-[40vw]'>
+                <div className='sm:mb-4 md:mb-8 max-w-[40vw]'>
                   <text className='sm:text-xl md:text-3xl text-white'>
                     Take your process to the next level
                   </text>
@@ -281,7 +281,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className='bg-[#00071A] w-full text-white px-14 md:px-40 py-10'>
-            <div className='md:w-60 float-left'>
+            <div className='md:w-60 sm:float-left'>
               <div>
                 <text className='font-bold'>
                   <text className='text-primary'>&#123;</text> Realistic Code{' '}
@@ -292,8 +292,8 @@ export default function HomePage() {
                 <text>© 2024 marktai.com</text>
               </div>
             </div>
-            <div className='flex float-right'>
-              <div className='px-10'>
+            <div className='flex flex-col sm:flex-row sm:float-right'>
+              <div className='pt-4 sm:pt-0 sm:px-10'>
                 <Link
                   href='https://venmo.com/?txn=pay&audience=friends&recipients=mark-tai&amount=5&note=Realistic%20Code'
                   className='font-semibold'
