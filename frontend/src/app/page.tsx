@@ -56,20 +56,20 @@ export default function HomePage() {
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-6'>
               <div className='sm:order-1'>
-                <div className='w-full flex justify-center sm:justify-normal'>
+                <div className='w-full flex justify-center sm:justify-normal text-center sm:text-left'>
                   <FontAwesomeIcon
                     icon={faHourglassHalf}
                     className='text-primary h-8 sm:h-12'
                   />
                 </div>
-                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal'>
+                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal text-center sm:text-left'>
                   <text className='font-bold text-lg sm:text-xl'>
                     Save your team time
                   </text>
                 </div>
               </div>
               <div className='sm:order-4'>
-                <div className='mb-4'>
+                <div className='mb-4 justify-center sm:justify-normal text-center sm:text-left'>
                   <text>Need </text>
                   <text className='font-bold'>fewer onsites</text>
                   <text>
@@ -81,40 +81,40 @@ export default function HomePage() {
                 </div>
               </div>
               <div className='sm:order-2'>
-                <div className='w-full flex justify-center sm:justify-normal'>
+                <div className='w-full flex justify-center sm:justify-normal text-center sm:text-left'>
                   <FontAwesomeIcon
                     icon={faFaceSmileBeam}
                     className='text-primary h-8 sm:h-12'
                   />
                 </div>
-                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal'>
+                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal text-center sm:text-left'>
                   <text className='font-bold text-lg sm:text-xl'>
                     Engage candidates
                   </text>
                 </div>
               </div>
               <div className='sm:order-5'>
-                <div className='mb-4'>
+                <div className='mb-4 justify-center sm:justify-normal text-center sm:text-left'>
                   <text>Make candidates </text>
                   <text className='font-bold'>excited</text>
                   <text> about your company via your interview process</text>
                 </div>
               </div>
               <div className='sm:order-3'>
-                <div className='w-full flex justify-center sm:justify-normal'>
+                <div className='w-full flex justify-center sm:justify-normal text-center sm:text-left'>
                   <FontAwesomeIcon
                     icon={faRobot}
                     className='text-primary h-8 sm:h-12'
                   />
                 </div>
-                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal'>
+                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal text-center sm:text-left'>
                   <text className='font-bold text-lg sm:text-xl'>
                     Future proof your process
                   </text>
                 </div>
               </div>
               <div className='sm:order-6'>
-                <div className='mb-4'>
+                <div className='mb-4 justify-center sm:justify-normal text-center sm:text-left'>
                   <text className='font-bold'>AI proof</text>
                   <text>
                     {' '}
@@ -127,19 +127,20 @@ export default function HomePage() {
             <div className='sm:flex items-center justify-center w-full'>
               <div className='flex w-full sm:w-auto items-center justify-center'>
                 <ButtonLink
-                  className='sm:mr-4 mb-4 sm:mb-0'
+                  className='w-full sm:w-auto sm:mr-4 mb-4 sm:mb-0 text-center font-semibold'
                   href='https://schedule.marktai.com'
                   variant='accent'
                 >
-                  <text className='font-semibold'>Schedule demo</text>
+                  Schedule demo
                 </ButtonLink>
               </div>
               <div className='flex w-full sm:w-auto items-center justify-center'>
                 <ButtonLink
+                  className='w-full sm:w-auto text-center'
                   href='https://www.marktai.com/#contact'
                   variant='light'
                 >
-                  <text className='font-semibold'>Contact us</text>
+                  <text className='font-semibold text-center'>Contact us</text>
                 </ButtonLink>
               </div>
             </div>
@@ -156,7 +157,7 @@ export default function HomePage() {
                     We'll do the work for you
                   </text>
                 </div>
-                <div className='sm:pb-4'>
+                <div className='pb-2 sm:pb-4'>
                   <text>
                     We screen a candidate and only impressive candidates proceed
                     to the onsite, based on your criteria priority and target
@@ -164,16 +165,40 @@ export default function HomePage() {
                   </text>
                 </div>
                 <ButtonLink
+                  className='w-full sm:w-auto sm:mr-4 mb-4 sm:mb-0 text-center font-semibold'
                   href='https://schedule.marktai.com'
                   variant='accent'
                 >
-                  <text className='font-semibold'>Schedule demo</text>
+                  Schedule demo
                 </ButtonLink>
               </div>
             </div>
           </div>
           <div className='border-b-2 py-8 sm:py-20 px-14 md:px-40' id='quotes'>
             <div className='w-full bg-accent p-8 sm:p-16 sm:flex'>
+              <img
+                src='/svg/quote.svg'
+                alt=''
+                height='55'
+                width='45'
+                className='mx-4 h-14'
+              />
+              <div>
+                <div>
+                  <text className='font-bold text-2xl sm:text-4xl'>
+                    Mark's studied the process, and he has the experience, not
+                    to mention he's a smart cookie
+                  </text>
+                </div>
+                <div>
+                  <text className='font-bold text-lg sm:text-xl'>
+                    — Nishanth, Staff Engineer looking for a job
+                  </text>
+                </div>
+              </div>
+            </div>
+
+            {/* <div className='w-full bg-accent p-8 sm:p-16 sm:flex'>
               <img
                 src='/svg/quote.svg'
                 alt=''
@@ -193,7 +218,7 @@ export default function HomePage() {
                   </text>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className='py-8 sm:py-20 px-4 md:px-20'>
             <div className='flex w-full items-center justify-center mb-4 sm:mb-12 p-4 md:p-0'>
@@ -229,12 +254,12 @@ export default function HomePage() {
                 </div>
               </div>
               <div className='flex py-4 items-center justify-center'>
-                <div className='w-[106px] h-[12px] sm:w-[212px] sm:h-[24px] mx-4'>
+                <div className='w-[73px] h-[15px] sm:w-[147px] sm:h-[29px] mx-4'>
                   <img
-                    src='/images/logos/cloudkitchens.png'
-                    alt='CloudKitchens'
-                    height='24'
-                    width='212'
+                    src='/images/logos/intuit.png'
+                    alt='Intuit'
+                    height='29'
+                    width='147'
                   />
                 </div>
                 <div className='w-[67px] h-[16px] sm:w-[134px] sm:h-[32px] mx-4'>
@@ -259,12 +284,12 @@ export default function HomePage() {
           <div className='p-0 bg-blue-500'>
             <div className="w-full bg-[url('https://www.marktai.com/download//RealisticCode/star_background.png')] bg-cover bg-center px-14 md:px-40 py-8 min-h-40 lg:min-h-80 text-center flex items-center justify-center">
               <div className='w-full flex flex-col content-center items-center justify-center'>
-                <div className='sm:mb-2 md:mb-4 max-w-[40vw]'>
-                  <text className='font-bold sm:text-2xl md:text-4xl text-white'>
-                    Hire effeciently
+                <div className='mb-1 sm:mb-2 md:mb-4 max-w-[40vw]'>
+                  <text className='font-bold text-lg sm:text-2xl md:text-4xl text-white'>
+                    Hire efficiently
                   </text>
                 </div>
-                <div className='sm:mb-4 md:mb-8 max-w-[40vw]'>
+                <div className='mb-1 sm:mb-4 md:mb-8 max-w-[40vw]'>
                   <text className='sm:text-xl md:text-3xl text-white'>
                     Take your process to the next level
                   </text>
