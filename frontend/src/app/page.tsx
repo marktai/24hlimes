@@ -46,7 +46,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className='h-96 w-full bg-blue-600'></div>
+            <img src='/images/meeting.png' alt='' />
           </div>
           <div className='border-b-2 py-8 sm:py-20 px-14 md:px-40'>
             <div className='w-full text-center px-8 pb-4 sm:pb-8'>
@@ -146,7 +146,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-16  border-b-2 py-8 sm:py-20 px-14 md:px-40'>
-            <div className='h-96 w-full bg-orange-600'></div>
+            <img src='/images/process.png' alt='' />
             <div className='items-center flex'>
               <div>
                 <div className='w-full'>
