@@ -281,7 +281,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className='p-0 bg-blue-500'>
+          <div className='p-0 bg-primary'>
             <div className="w-full bg-[url('https://www.marktai.com/download//RealisticCode/star_background.png')] bg-cover bg-center px-14 md:px-40 py-8 min-h-40 lg:min-h-80 text-center flex items-center justify-center">
               <div className='w-full flex flex-col content-center items-center justify-center'>
                 <div className='mb-1 sm:mb-2 md:mb-4 max-w-[40vw]'>
@@ -289,7 +289,7 @@ export default function HomePage() {
                     Hire efficiently
                   </text>
                 </div>
-                <div className='mb-1 sm:mb-4 md:mb-8 max-w-[40vw]'>
+                <div className='mb-2 sm:mb-5 md:mb-10 max-w-[40vw]'>
                   <text className='sm:text-xl md:text-3xl text-white'>
                     Take your process to the next level
                   </text>
