@@ -29,7 +29,7 @@ export default function HomePage() {
       <section>
         <div className='layout relative flex flex-col sm:pt-6 lg:pt-12 w-full max-w-full'>
           <div className='border-b-2 grid md:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 md:gap-16 pt-5 md:pt-20 py-8 sm:py-20 px-14 md:px-40'>
-            <div className='items-center flex'>
+            <div className='flex items-center justify-center'>
               <div>
                 <div className='w-full pb-2 sm:pb-6'>
                   <text className='font-bold text-4xl sm:text-6xl	'>
@@ -46,7 +46,9 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <img src='/images/meeting_medium.png' alt='' />
+            <div className='flex items-center justify-center'>
+              <img src='/images/meeting_medium.png' alt='' />
+            </div>
           </div>
           <div className='border-b-2 py-8 sm:py-20 px-14 md:px-40'>
             <div className='w-full text-center px-8 pb-4 sm:pb-10'>
@@ -145,8 +147,10 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-16  border-b-2 py-8 sm:py-20 px-14 md:px-40'>
-            <img src='/images/process_medium.png' alt='' />
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-16 border-b-2 py-8 sm:py-20 px-14 md:px-40'>
+            <div className='w-full h-full flex items-center justify-center'>
+              <img src='/images/process_medium.png' alt='' />
+            </div>
             <div className='items-center flex'>
               <div>
                 <div className='w-full mb-4'>
