@@ -46,7 +46,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <img src='/images/meeting.png' alt='' />
+            <img src='/images/meeting_medium.png' alt='' />
           </div>
           <div className='border-b-2 py-8 sm:py-20 px-14 md:px-40'>
             <div className='w-full text-center px-8 pb-4 sm:pb-10'>
@@ -146,7 +146,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-16  border-b-2 py-8 sm:py-20 px-14 md:px-40'>
-            <img src='/images/process.png' alt='' />
+            <img src='/images/process_medium.png' alt='' />
             <div className='items-center flex'>
               <div>
                 <div className='w-full mb-4'>
