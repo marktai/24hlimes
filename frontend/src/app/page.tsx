@@ -28,10 +28,10 @@ export default function HomePage() {
       <Header />
       <section>
         <div className='layout relative flex flex-col sm:pt-6 lg:pt-12 w-full max-w-full'>
-          <div className='border-b-2 grid md:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-16 pt-5 md:pt-20 py-8 sm:py-20 px-14 md:px-40'>
+          <div className='border-b-2 grid md:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 md:gap-16 pt-5 md:pt-20 py-8 sm:py-20 px-14 md:px-40'>
             <div className='items-center flex'>
               <div>
-                <div className='w-full sm:pb-8'>
+                <div className='w-full pb-2 sm:pb-6'>
                   <text className='font-bold text-4xl sm:text-6xl	'>
                     Hire quality talent efficiently
                   </text>
@@ -49,7 +49,7 @@ export default function HomePage() {
             <img src='/images/meeting.png' alt='' />
           </div>
           <div className='border-b-2 py-8 sm:py-20 px-14 md:px-40'>
-            <div className='w-full text-center px-8 pb-4 sm:pb-8'>
+            <div className='w-full text-center px-8 pb-4 sm:pb-10'>
               <text className='font-bold text-2xl sm:text-3xl'>
                 Why use Realistic Code?
               </text>
@@ -62,7 +62,7 @@ export default function HomePage() {
                     className='text-primary h-8 sm:h-12'
                   />
                 </div>
-                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal text-center sm:text-left'>
+                <div className='mt-4 sm:mb-4 w-full flex justify-center sm:justify-normal text-center sm:text-left'>
                   <text className='font-bold text-lg sm:text-xl'>
                     Save your team time
                   </text>
@@ -87,7 +87,7 @@ export default function HomePage() {
                     className='text-primary h-8 sm:h-12'
                   />
                 </div>
-                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal text-center sm:text-left'>
+                <div className='mt-4 sm:mb-4 w-full flex justify-center sm:justify-normal text-center sm:text-left'>
                   <text className='font-bold text-lg sm:text-xl'>
                     Engage candidates
                   </text>
@@ -107,7 +107,7 @@ export default function HomePage() {
                     className='text-primary h-8 sm:h-12'
                   />
                 </div>
-                <div className='mt-4 sm:mb-2 w-full flex justify-center sm:justify-normal text-center sm:text-left'>
+                <div className='mt-4 sm:mb-4 w-full flex justify-center sm:justify-normal text-center sm:text-left'>
                   <text className='font-bold text-lg sm:text-xl'>
                     Future proof your process
                   </text>
@@ -127,7 +127,7 @@ export default function HomePage() {
             <div className='sm:flex items-center justify-center w-full'>
               <div className='flex w-full sm:w-auto items-center justify-center'>
                 <ButtonLink
-                  className='w-full sm:w-auto sm:mr-4 mb-4 sm:mb-0 text-center font-semibold'
+                  className='w-full sm:w-auto sm:mr-10 mb-4 sm:mb-0 text-center font-semibold'
                   href='https://schedule.marktai.com'
                   variant='accent'
                 >
@@ -145,19 +145,19 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-16  border-b-2 py-8 sm:py-20 px-14 md:px-40'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-16  border-b-2 py-8 sm:py-20 px-14 md:px-40'>
             <img src='/images/process.png' alt='' />
             <div className='items-center flex'>
               <div>
-                <div className='w-full'>
+                <div className='w-full mb-4'>
                   <text className='font-bold text-xl'>Product</text>
                 </div>
-                <div className='w-full'>
+                <div className='w-full mb-4'>
                   <text className='font-bold text-2xl sm:text-4xl'>
                     We'll do the work for you
                   </text>
                 </div>
-                <div className='pb-2 sm:pb-4'>
+                <div className='mb-4'>
                   <text>
                     We screen a candidate and only impressive candidates proceed
                     to the onsite, based on your criteria priority and target
@@ -165,7 +165,7 @@ export default function HomePage() {
                   </text>
                 </div>
                 <ButtonLink
-                  className='w-full sm:w-auto sm:mr-4 mb-4 sm:mb-0 text-center font-semibold'
+                  className='w-full sm:w-auto sm:mr-4 mb-4 sm:mb-0'
                   href='https://schedule.marktai.com'
                   variant='accent'
                 >
@@ -181,17 +181,17 @@ export default function HomePage() {
                 alt=''
                 height='55'
                 width='45'
-                className='mx-4 h-14'
+                className='pb-4 sm:mx-6 lg:mx-10 h-14'
               />
               <div>
-                <div>
+                <div className='pb-4'>
                   <text className='font-bold text-2xl sm:text-4xl'>
-                    Mark's studied the process, and he has the experience, not
+                    Mark has studied the process, and he has the experience, not
                     to mention he's a smart cookie
                   </text>
                 </div>
                 <div>
-                  <text className='font-bold text-lg sm:text-xl'>
+                  <text className=''>
                     — Nishanth, Staff Engineer looking for a job
                   </text>
                 </div>
@@ -221,7 +221,7 @@ export default function HomePage() {
             </div> */}
           </div>
           <div className='py-8 sm:py-20 px-4 md:px-20'>
-            <div className='flex w-full items-center justify-center mb-4 sm:mb-12 p-4 md:p-0'>
+            <div className='flex w-full items-center justify-center p-2 sm:p-10'>
               <text className='font-bold text-xl sm:text-4xl text-center'>
                 Brainstormed by engineers at top companies
               </text>
@@ -294,10 +294,11 @@ export default function HomePage() {
                     Take your process to the next level
                   </text>
                 </div>
-                <div>
+                <div className='w-full'>
                   <ButtonLink
                     href='https://schedule.marktai.com'
                     variant='accent'
+                    className='w-full sm:w-auto'
                   >
                     <text className='font-semibold'>Schedule demo</text>
                   </ButtonLink>
@@ -318,7 +319,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className='flex flex-col sm:flex-row sm:float-right'>
-              <div className='pt-4 sm:pt-0 sm:px-10'>
+              <div className='py-4 sm:pt-0 sm:px-10'>
                 <Link
                   href='https://venmo.com/?txn=pay&audience=friends&recipients=mark-tai&amount=5&note=Realistic%20Code'
                   className='font-semibold'
