@@ -27,14 +27,12 @@ export default function Component() {
             </Button>
           </SheetTrigger>
           <div className='font-bold absolute w-full ml-[-32px] text-center text-lg sm:hidden'>
-            <text className='text-primary'>&#123;</text> Realistic Code{' '}
-            <text className='text-primary'>&#125;</text>
+            24hlimes logo
           </div>
           <SheetContent side='left'>
             <Link href='#' prefetch={false}>
               <text className='font-bold'>
-                <text className='text-primary'>&#123;</text> Realistic Code{' '}
-                <text className='text-primary'>&#125;</text>
+                24hlimes logo
               </text>
             </Link>
             <div className='grid gap-4 py-6'>
@@ -60,8 +58,7 @@ export default function Component() {
         </Sheet>
         <Link href='#' className='mr-6 hidden sm:flex' prefetch={false}>
           <text className='font-bold'>
-            <text className='text-primary'>&#123;</text> Realistic Code{' '}
-            <text className='text-primary'>&#125;</text>
+            24hlimes logo
           </text>
         </Link>
         <NavigationMenu className='hidden sm:flex ml-auto'>

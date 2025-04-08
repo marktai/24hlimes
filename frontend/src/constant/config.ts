@@ -1,7 +1,7 @@
 export const siteConfig = {
-  title: 'Realistic Code: Reimagined Coding Interviews',
+  title: '24hlimes',
   description:
-    'Realistic Code sells boutique, engaging coding interviews as a service',
+    'Your favorite board game bar',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://RealisticCode.com',
 };

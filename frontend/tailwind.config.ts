@@ -75,6 +75,7 @@ const config = {
     },
     fontFamily: {
       sans: ['DM', 'ui-sans-serif', 'system-ui'],
+      title: ['Dela Gothic One', 'DM', 'ui-sans-serif', 'system-ui'],
       serif: ['ui-serif', 'Georgia'],
       mono: ['ui-monospace', 'SFMono-Regular'],
     },
