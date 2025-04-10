@@ -67,6 +67,134 @@ import {
  * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
  */
 
+function Hero() {
+  return (
+    <section className='h-screen lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw] bg-[url(/images/hero_bg.png)] bg-cover bg-center flex items-center justify-center w-screen'>
+      <div className='w-full m-auto text-center pt-8'>
+        <span
+          className={
+            'font-bold text-[#FEF4D8] text-4xl sm:text-6xl lg:text-[120px]  ' +
+            defaultTitle.className
+          }
+        >
+          24 Hour Limes
+        </span>
+      </div>
+    </section>
+  );
+}
+
+function LogoDivider() {
+  return (
+    <div className='w-screen h-[50px] md:h-[70px] bg-[url(/images/lime_bg.png)] bg-contain bg-repeat-x'></div>
+  );
+}
+function CardDisplays(
+  enableModal: (drink: DrinkType) => void,
+  screenSizes: string[],
+) {
+  const charityCasinoNightDrinkImages = charityCasinoNightDrinks.map(
+    (drink, i) => (
+      <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
+    ),
+  );
+  const charityCasinoNightDrinksClicks = charityCasinoNightDrinks.map(
+    (drink) => () => {
+      enableModal(drink);
+    },
+  );
+
+  const speakeasyNightDrinkImages = speakeasyNightDrinks.map((drink, i) => (
+    <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
+  ));
+  const speakeasyNightDrinksClicks = speakeasyNightDrinks.map((drink) => () => {
+    enableModal(drink);
+  });
+
+  const modifierImages = modifiers.map((drink, i) => (
+    <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
+  ));
+  const modifierClicks = modifiers.map((drink) => () => {
+    enableModal(drink);
+  });
+
+  return (
+    <div className='layout relative flex flex-col w-full max-w-full'>
+      <section className='border-b-8 border-[#57EFFF] bg-[#00245B] rounded-b-[80px] lg:rounded-b-[160px] mb-[-80px] lg:mb-[-160px] w-screen px-10 pt-14 pb-4 lg:px-[120px] lg:pt-[80px] z-[1] overflow-clip'>
+        <div className='w-full text-center px-8 pb-8 sm:pb-10'>
+          <div
+            className={
+              'font-bold text-[#57EFFF] text-4xl sm:text-5xl md:text-7xl ' +
+              neatHandwrittenTitle.className
+            }
+          >
+            Charity Casino Night
+          </div>
+          <div>
+            I threw a{' '}
+            <a
+              className='text-[#57EFFF] hover:underline'
+              href='https://casino.marktai.com'
+            >
+              party where we raised $23,000 for Gaza victims
+            </a>{' '}
+            and also prepared a great cocktail menu!
+          </div>
+        </div>
+        <div className='w-full text-center'>
+          <CarouselArc
+            items={charityCasinoNightDrinkImages}
+            clickFunctions={charityCasinoNightDrinksClicks}
+            screenSizes={screenSizes}
+          />
+        </div>
+      </section>
+
+      <section className='border-b-8 border-[#29FFA4] bg-[#0F3022] rounded-b-[80px] lg:rounded-b-[160px] pt-[136px] lg:pt-[280px] w-screen px-10 pb-4 lg:px-[120px] z-0 overflow-clip'>
+        <div className='w-full text-center px-8 pb-8 sm:pb-10'>
+          <div
+            className={
+              'font-bold text-[#29FFA4] text-4xl sm:text-5xl md:text-7xl pb-4 ' +
+              serifTitle.className
+            }
+          >
+            Speakeasy Night
+          </div>
+          <div>
+            My friends and I organized a night with puzzle solving as the entry
+            ticket, and I debuted the first 24 Hour Limes menu
+          </div>
+        </div>
+        <CarouselArc
+          items={speakeasyNightDrinkImages}
+          clickFunctions={speakeasyNightDrinksClicks}
+          screenSizes={screenSizes}
+        />
+
+        <div className='w-full text-center px-8 pb-8 sm:pb-10'>
+          <div
+            className={
+              'font-bold text-[#29FFA4] text-4xl sm:text-5xl md:text-7xl  pb-4 ' +
+              serifTitle.className
+            }
+          >
+            Modifiers
+          </div>
+          <div>
+            Guests could pick drinks, then add any modifier they wanted to
+            customize their drinks
+          </div>
+        </div>
+        <CarouselArc
+          items={modifierImages}
+          clickFunctions={modifierClicks}
+          screenSizes={screenSizes}
+        />
+      </section>
+    </div>
+  );
+}
+
 function DrinkModal() {
   const [modalEnabled, setModalEnabled] = React.useState(false);
   const [focusDrink, setFocusDrink] = React.useState(
@@ -122,7 +250,7 @@ function DrinkModal() {
           style={{
             rotate: `${(-1) ** i * -4}deg`,
             boxShadow: '0px 2px 5px 0px rgba(0, 0, 0, 0.50)',
-            borderRadius: '4%/2%',
+            borderRadius: '3.4%/2.42%',
           }}
         />
       </button>
@@ -155,7 +283,7 @@ function DrinkModal() {
           ← All drinks
         </button>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-x-8'>
-          <div className='order-2 sm:order-1 row-span-2 lg:h-full flex'>
+          <div className='order-2 sm:order-1 row-span-2 lg:h-full pb-4 flex'>
             <img
               src={focusDrink.link}
               alt={focusDrink.name + ' card'}
@@ -163,7 +291,7 @@ function DrinkModal() {
               className='m-auto transition-none'
               style={{
                 boxShadow: '0px 4px 10px 0px rgba(0, 0, 0, 0.50)',
-                borderRadius: '2.777%/1.984%',
+                borderRadius: '3.4%/2.42%',
               }}
             />
           </div>
@@ -225,7 +353,7 @@ function DrinkModal() {
           >
             More drinks
           </div>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-[40px] md:gap-x-[120px] md:gap-y-[80px]'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-[40px] sm:gap-[80px] md:gap-[40px] lg:gap-[80px] xl:gap-x-[120px]'>
             {modalRelated}
           </div>
         </div>
@@ -233,7 +361,7 @@ function DrinkModal() {
         <button
           type='button'
           onClick={() => scrollToTop()}
-          className='fixed right-4 bottom-20'
+          className='fixed right-4 bottom-20 md:hidden'
         >
           <img
             src='/images/scroll_button.svg'
@@ -246,6 +374,104 @@ function DrinkModal() {
   );
 
   return { component: ret, enableModal: enableModal };
+}
+
+function OtherFunThings(screenSizes: string[]) {
+  return (
+    <section className='border-t-8 border-[#D0CCA9] bg-[#FEF4D8] rounded-t-[80px] lg:rounded-t-[160px] w-screen px-10 py-20 lg:px-[120px] z-0 text-[#800000]'>
+      <div className='w-full text-center px-8'>
+        <div
+          className={
+            'font-bold text-3xl sm:text-5xl lg:text-7xl pb-4 ' +
+            defaultTitle.className
+          }
+        >
+          Other fun things I do
+        </div>
+        <div
+          className={
+            'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 text-[12px] sm:text-[16px] ' +
+            (screenSizes.includes('md')
+              ? defaultTitle.className
+              : neatHandwrittenText.className)
+          }
+        >
+          <a
+            type='button'
+            href='https://boardgames.marktai.com'
+            className='border-[#800000] border-[1px]'
+          >
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+              <div className='w-6'>
+                <FontAwesomeIcon icon={faDice} className='h-5' />
+              </div>
+              <div className='px-2 m-auto'>Board game designer</div>
+            </div>
+          </a>
+          <a
+            type='button'
+            href='https://diving.marktai.com'
+            className='border-[#800000] border-[1px] border-t-0 lg:border-t-[1px] lg:border-l-0'
+          >
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+              <div className='w-6'>
+                <FontAwesomeIcon icon={faFishFins} className='h-5' />
+              </div>
+              <div className='px-2 m-auto'>Diving instructor</div>
+            </div>
+          </a>
+          <a
+            type='button'
+            href='https://music.marktai.com'
+            className='border-[#800000] border-[1px] border-t-0 lg:border-t-0 xl:border-t-[1px] xl:border-l-0'
+          >
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+              <div className='w-6'>
+                <FontAwesomeIcon icon={faMusic} className='h-5' />
+              </div>
+              <div className='px-2 m-auto'>Jazz musician & arranger</div>
+            </div>
+          </a>
+          <a
+            type='button'
+            href='https://casino.marktai.com'
+            className='border-[#800000] border-[1px] border-t-0 lg:border-l-0 lg:border-t-0 xl:border-l-[1px]'
+          >
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+              <div className='w-6'>
+                <FontAwesomeIcon icon={faPeopleGroup} className='h-5' />
+              </div>
+              <div className='px-2 m-auto'>Party planner</div>
+            </div>
+          </a>
+          <a
+            type='button'
+            href='https://resume.marktai.com'
+            className='border-[#800000] border-[1px] border-t-0 lg:border-t-0 xl:border-l-0'
+          >
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+              <div className='w-6'>
+                <FontAwesomeIcon icon={faLaptopCode} className='h-5' />
+              </div>
+              <div className='px-2 m-auto'>Senior software engineer</div>
+            </div>
+          </a>
+          <a
+            type='button'
+            href='https://interviewing.marktai.com'
+            className='border-[#800000] border-[1px] border-t-0 lg:border-l-0 lg:border-t-0'
+          >
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+              <div className='w-6'>
+                <FontAwesomeIcon icon={faClipboard} className='h-5' />
+              </div>
+              <div className='px-2 m-auto'>Technical interview coach</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default function HomePage() {
@@ -284,31 +510,6 @@ export default function HomePage() {
 
   const { component: drinkModal, enableModal } = DrinkModal();
 
-  const charityCasinoNightDrinkImages = charityCasinoNightDrinks.map(
-    (drink, i) => (
-      <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
-    ),
-  );
-  const charityCasinoNightDrinksClicks = charityCasinoNightDrinks.map(
-    (drink) => () => {
-      enableModal(drink);
-    },
-  );
-
-  const speakeasyNightDrinkImages = speakeasyNightDrinks.map((drink, i) => (
-    <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
-  ));
-  const speakeasyNightDrinksClicks = speakeasyNightDrinks.map((drink) => () => {
-    enableModal(drink);
-  });
-
-  const modifierImages = modifiers.map((drink, i) => (
-    <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
-  ));
-  const modifierClicks = modifiers.map((drink) => () => {
-    enableModal(drink);
-  });
-
   return (
     <main
       className={'bg-[#800000] text-[#FEF4D8]' + neatHandwrittenText.className}
@@ -318,190 +519,20 @@ export default function HomePage() {
       </Head>
       {/* <Header /> */}
 
-      <Logo />
+      <Logo
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
 
       {drinkModal}
       <div className='text-[#FEF4D8]'>
         <div className='layout relative flex flex-col w-full max-w-full'>
-          <section className='h-screen lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw] bg-[url(/images/hero_bg.png)] bg-cover bg-center flex items-center justify-center w-screen'>
-            <div className='w-full m-auto text-center pt-8'>
-              <span
-                className={
-                  'font-bold text-[#FEF4D8] text-4xl sm:text-6xl ' +
-                  defaultTitle.className
-                }
-              >
-                24 Hour Limes
-              </span>
-            </div>
-          </section>
-
-          <div className='w-screen h-[70px] bg-[url(/images/lime_bg.png)] bg-contain bg-repeat-x'></div>
-
-          <section className='border-b-8 border-[#57EFFF] bg-[#00245B] rounded-b-[80px] lg:rounded-b-[160px] mb-[-80px] lg:mb-[-160px] w-screen px-10 pt-20 pb-10 lg:px-[120px] lg:pt-[80px] z-[1] overflow-clip'>
-            <div className='w-full text-center px-8 pb-8 sm:pb-10'>
-              <div
-                className={
-                  'font-bold text-[#57EFFF] text-3xl sm:text-5xl md:text-7xl ' +
-                  neatHandwrittenTitle.className
-                }
-              >
-                Charity Casino Night
-              </div>
-              <div>
-                I threw a{' '}
-                <a
-                  className='text-[#57EFFF] hover:underline'
-                  href='https://casino.marktai.com'
-                >
-                  party where we raised $23,000 for Gaza victims
-                </a>{' '}
-                and also prepared a great cocktail menu!
-              </div>
-            </div>
-            <div className='w-full text-center'>
-              <CarouselArc
-                items={charityCasinoNightDrinkImages}
-                clickFunctions={charityCasinoNightDrinksClicks}
-                screenSizes={screenSizes}
-              />
-            </div>
-          </section>
-
-          <section className='border-b-8 border-[#29FFA4] bg-[#0F3022] rounded-b-[80px] lg:rounded-b-[160px] pt-[200px] lg:pt-[280px] w-screen px-10 pb-10 lg:px-[120px] z-0 overflow-clip'>
-            <div className='w-full text-center px-8 pb-8 sm:pb-10'>
-              <div
-                className={
-                  'font-bold text-[#29FFA4] text-3xl sm:text-5xl md:text-7xl pb-4 ' +
-                  serifTitle.className
-                }
-              >
-                Speakeasy Night
-              </div>
-              <div>
-                My friends and I organized a night with puzzle solving as the
-                entry ticket, and I debuted the first 24 Hour Limes menu
-              </div>
-            </div>
-            <CarouselArc
-              items={speakeasyNightDrinkImages}
-              clickFunctions={speakeasyNightDrinksClicks}
-              screenSizes={screenSizes}
-            />
-
-            <div className='w-full text-center px-8 pb-8 sm:pb-10'>
-              <div
-                className={
-                  'font-bold text-[#29FFA4] text-3xl sm:text-5xl md:text-7xl  pb-4 ' +
-                  serifTitle.className
-                }
-              >
-                Modifiers
-              </div>
-              <div>
-                Guests could pick drinks, then add any modifier they wanted to
-                customize their drinks
-              </div>
-            </div>
-            <CarouselArc
-              items={modifierImages}
-              clickFunctions={modifierClicks}
-              screenSizes={screenSizes}
-            />
-          </section>
-
-          <section
-            className={
-              'border-t-8 border-[#D0CCA9] bg-[#FEF4D8] rounded-t-[80px] lg:rounded-t-[160px] w-screen px-10 py-20 lg:px-[120px] z-0 text-[#800000] ' +
-              (screenSizes.includes('md')
-                ? defaultTitle.className
-                : neatHandwrittenText.className)
-            }
-          >
-            <div className='w-full text-center px-8'>
-              <div className='font-bold text-7xl sm:text-5xl pb-4 '>
-                Other fun things I do
-              </div>
-              <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 '>
-                <a
-                  type='button'
-                  href='https://boardgames.marktai.com'
-                  className='border-[#800000] border-[1px]'
-                >
-                  <div className='px-8 py-5 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
-                    <div className='w-6'>
-                      <FontAwesomeIcon icon={faDice} className='h-5' />
-                    </div>
-                    <div className='px-2 mx-auto'>Board game designer</div>
-                  </div>
-                </a>
-                <a
-                  type='button'
-                  href='https://diving.marktai.com'
-                  className='border-[#800000] border-[1px] border-t-0 lg:border-t-[1px] lg:border-l-0'
-                >
-                  <div className='px-8 py-5 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
-                    <div className='w-6'>
-                      <FontAwesomeIcon icon={faFishFins} className='h-5' />
-                    </div>
-                    <div className='px-2 mx-auto'>Diving instructor</div>
-                  </div>
-                </a>
-                <a
-                  type='button'
-                  href='https://music.marktai.com'
-                  className='border-[#800000] border-[1px] border-t-0 lg:border-t-0 xl:border-t-[1px] xl:border-l-0'
-                >
-                  <div className='px-8 py-5 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
-                    <div className='w-6'>
-                      <FontAwesomeIcon icon={faMusic} className='h-5' />
-                    </div>
-                    <div className='px-2 mx-auto'>Jazz musician & arranger</div>
-                  </div>
-                </a>
-                <a
-                  type='button'
-                  href='https://casino.marktai.com'
-                  className='border-[#800000] border-[1px] border-t-0 lg:border-l-0 lg:border-t-0 xl:border-l-[1px]'
-                >
-                  <div className='px-8 py-5 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
-                    <div className='w-6'>
-                      <FontAwesomeIcon icon={faPeopleGroup} className='h-5' />
-                    </div>
-                    <div className='px-2 mx-auto'>Party planner</div>
-                  </div>
-                </a>
-                <a
-                  type='button'
-                  href='https://resume.marktai.com'
-                  className='border-[#800000] border-[1px] border-t-0 lg:border-t-0 xl:border-l-0'
-                >
-                  <div className='px-8 py-5 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
-                    <div className='w-6'>
-                      <FontAwesomeIcon icon={faLaptopCode} className='h-5' />
-                    </div>
-                    <div className='px-2 mx-auto'>Senior software engineer</div>
-                  </div>
-                </a>
-                <a
-                  type='button'
-                  href='https://interviewing.marktai.com'
-                  className='border-[#800000] border-[1px] border-t-0 lg:border-l-0 lg:border-t-0'
-                >
-                  <div className='px-8 py-5 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
-                    <div className='w-6'>
-                      <FontAwesomeIcon icon={faClipboard} className='h-5' />
-                    </div>
-                    <div className='px-2 mx-auto'>
-                      Technical interviewing coach
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <div className='w-screen h-[70px] bg-[url(/images/lime_bg.png)] bg-contain bg-repeat-x'></div>
+          {Hero()}
+          {LogoDivider()}
+          {CardDisplays(enableModal, screenSizes)}
+          {OtherFunThings(screenSizes)}
+          {LogoDivider()}
         </div>
       </div>
     </main>

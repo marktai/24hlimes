@@ -30,6 +30,7 @@ export default function CarouselArc({
 
   const targetLength = 6 * items.length;
 
+  // TODO(mark): reduce this to only 3 times repeated?
   const duplicatedItems = items
     .concat(items)
     .concat(items)
@@ -43,34 +44,37 @@ export default function CarouselArc({
         relativeIndex -= targetLength;
       }
 
+      let width = 0;
+      if (screenSizes.includes('lg')) {
+        width = relativeIndex === 0 ? 232 : 160;
+      } else {
+        width = relativeIndex === 0 ? 200 : 160;
+      }
+
+      const visibleOnEachSide = Math.min(3, Math.floor((items.length - 1) / 2));
+      const visible = Math.abs(relativeIndex) <= visibleOnEachSide;
+
       let degreesRotated = 0;
       // let middle item have more space
       if (screenSizes.includes('lg')) {
         degreesRotated = relativeIndex * 0.07 + Math.sign(relativeIndex) * 0.01;
       } else {
         degreesRotated =
-          relativeIndex * 0.05 + Math.sign(relativeIndex) * 0.007;
-      }
-
-      let width = 0;
-      if (screenSizes.includes('lg')) {
-        width = relativeIndex === 0 ? 232 : 160;
-      } else {
-        width = relativeIndex === 0 ? 160 : 120;
+          relativeIndex * 0.06 + Math.sign(relativeIndex) * 0.007;
       }
 
       const style = {
         left: `${Math.round(Math.sin(degreesRotated) * 3000 + 1)}px`,
         rotate: `${degreesRotated}rad`,
-        top: `${Math.round((1 - Math.cos(Math.abs(degreesRotated))) * 3000 + 44)}px`,
+        top: `${Math.round((1 - Math.cos(Math.abs(degreesRotated))) * 3000 + 44 + (relativeIndex === 0 ? 0 : -20))}px`,
         width: `${width}px`,
         zIndex: relativeIndex === 0 ? '5' : '0',
-        opacity: Math.abs(relativeIndex) > 4 ? 0 : 100, // hides offscreen cards jumping from one side to the other
+        opacity: visible ? 100 : 0, // hides offscreen cards jumping from one side to the other
         boxShadow:
           relativeIndex === 0
             ? '0px 4px 10px 0px rgba(0, 0, 0, 0.50)'
             : '0px 2px 5px 0px rgba(0, 0, 0, 0.50)',
-        borderRadius: '4%/2%',
+        borderRadius: '3.4%/2.42%',
       };
 
       if (relativeIndex === 0) {
@@ -87,10 +91,14 @@ export default function CarouselArc({
 
       return (
         <button
-          onClick={() => onClick(i)}
-          className='absolute transition-all -translate-x-1/2'
+          className={
+            'absolute transition-all duration-300 -translate-x-1/2 ' +
+            (visible ? '' : 'cursor-default')
+          }
+          type='button'
           style={style}
           key={i}
+          onClick={() => (visible ? onClick(i) : null)}
         >
           {item}
         </button>
@@ -166,7 +174,7 @@ export default function CarouselArc({
         onTouchEnd();
       }}
     >
-      <div className='min-h-[260px] lg:min-h-[360px] w-full'>
+      <div className='min-h-[310px] lg:min-h-[360px] w-full'>
         <div className='w-[2px] mx-auto relative'>{duplicatedItems}</div>
       </div>
       <div className='w-full min-h-[40px]'>

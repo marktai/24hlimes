@@ -7,7 +7,11 @@
 
 import React, { useEffect, useState } from 'react';
 
-export default function Component() {
+type LogoProps = {
+  onClick: () => void;
+};
+
+export default function Logo({ onClick }: LogoProps) {
   // lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw]
   const [fillColor, setFillColor] = useState('#CA0003');
   const [logoHeight, setLogoHeight] = useState(93);
@@ -51,9 +55,9 @@ export default function Component() {
   }, []);
 
   return (
-    <div className='fixed p-5 z-10'>
+    <button className='fixed p-5 z-10' onClick={() => onClick()}>
       <svg
-        className='transition-[fill]'
+        className='transition-[fill] duration-300'
         height={`${logoHeight}px`}
         viewBox='0 0 111 93'
         fill={fillColor}
@@ -75,6 +79,6 @@ export default function Component() {
         <path d='M83.2339 11.4434L86.271 11.1894C86.826 10.0956 87.4401 6.93352 88.6429 6.44033C89.0917 6.25623 89.8617 6.36508 90.2165 6.67819C90.9166 7.2977 90.2595 10.1332 90.0875 11.0403C91.5402 10.6788 94.4697 10.9328 93.9201 13.0614C93.4887 14.7305 91.0698 14.799 89.7139 15.2371C89.0837 17.2354 89.1656 22.6161 85.7402 21.2306C84.1276 20.5788 84.7646 17.2542 85.2551 15.9775C85.3169 15.8176 85.6313 15.9722 85.5185 15.612C83.4382 15.4279 80.5261 16.5823 78.6152 15.7289C76.8131 14.924 76.9206 13.2039 77.7497 11.6732C79.0869 9.20595 85.5413 1.81485 87.8944 0.450852C89.7058 -0.598684 91.3171 0.25062 90.4235 2.30803C88.3109 5.55474 85.5144 8.3123 83.2339 11.4448V11.4434Z' />
         <path d='M54.5719 24.9127C55.8163 24.6238 56.3968 25.5309 56.5661 26.6234C57.019 29.5221 55.2975 36.3299 54.5746 39.4275C54.1109 41.4123 53.6433 46.1467 50.789 45.7032C49.0433 45.4317 48.9761 43.412 49.1347 42.0507C49.5083 38.851 50.7567 33.8734 51.606 30.6805C51.9729 29.3017 53.06 25.2634 54.5705 24.9114L54.5719 24.9127Z' />
       </svg>
-    </div>
+    </button>
   );
 }
