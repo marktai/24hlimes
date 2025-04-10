@@ -10,30 +10,29 @@ import React, { useEffect, useState } from 'react';
 export default function Component() {
   // lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw]
   const [fillColor, setFillColor] = useState('#CA0003');
+  const [logoHeight, setLogoHeight] = useState(93);
 
   // create element ref
 
   useEffect(() => {
-    let { innerWidth: width, innerHeight: height } = window;
-    function handleResize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-    function handleScroll() {
-      const scrollTop = window.scrollY + 93;
+    function updateLogoColor() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
       //   <div className='border-b-2 h-screen lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw] bg-[url(/images/hero_bg.png)] bg-cover bg-center flex items-center justify-center w-screen'>
       let heroHeight = height;
+      let logoHeight = 60;
       if (width > 640) {
         // small
         heroHeight = Math.max(heroHeight, 400);
       }
       if (width > 1024) {
-        // small
+        // large
         heroHeight = Math.max(heroHeight, 600);
+        logoHeight = 93;
       }
+      setLogoHeight(logoHeight);
+
+      const scrollTop = window.scrollY + logoHeight;
       heroHeight = Math.min(heroHeight, width);
       if (scrollTop < heroHeight) {
         setFillColor('#CA0003');
@@ -42,10 +41,12 @@ export default function Component() {
       }
     }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', updateLogoColor);
+    window.addEventListener('resize', updateLogoColor);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', updateLogoColor);
+      window.removeEventListener('resize', updateLogoColor);
     };
   }, []);
 
@@ -53,8 +54,7 @@ export default function Component() {
     <div className='fixed p-5 z-10'>
       <svg
         className='transition-[fill]'
-        width='111'
-        height='93'
+        height={`${logoHeight}px`}
         viewBox='0 0 111 93'
         fill={fillColor}
         xmlns='http://www.w3.org/2000/svg'
