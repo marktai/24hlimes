@@ -5,53 +5,28 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 type CarouselArcProps = {
   items: Array<React.JSX.Element>;
   clickFunctions: Array<() => void>;
   startingIndex?: number;
+  screenSizes: string[];
 };
 
 export default function CarouselArc({
   items,
   clickFunctions,
   startingIndex = 0,
+  screenSizes,
 }: CarouselArcProps) {
   // lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw]
   const [index, setIndex] = useState(startingIndex + items.length);
-  const [screenSizes, setScreenSizes] = useState(['sm', 'md', 'lg']);
+  const [touchStart, setTouchStart] = useState<[number, number] | null>(null);
+  const [touchEnd, setTouchEnd] = useState<[number, number] | null>(null);
 
-  function updateScreenSizes() {
-    const width = window.innerWidth;
-    const newScreenSizes: string[] = [];
-    if (width > 640) {
-      newScreenSizes.push('sm');
-    }
-    if (width > 768) {
-      newScreenSizes.push('md');
-    }
-    if (width > 1024) {
-      newScreenSizes.push('lg');
-    }
-    if (width > 1280) {
-      newScreenSizes.push('xl');
-    }
-    if (width > 1536) {
-      newScreenSizes.push('2xl');
-    }
-    if (screenSizes.length !== newScreenSizes.length) {
-      setScreenSizes(newScreenSizes);
-    }
-  }
-
-  useEffect(() => {
-    updateScreenSizes();
-    window.addEventListener('resize', updateScreenSizes);
-    return () => {
-      window.removeEventListener('resize', updateScreenSizes);
-    };
-  });
+  // the required distance between touchStart and touchEnd to be detected as a swipe
+  const minSwipeDistance = 50;
 
   const targetLength = 6 * items.length;
 
@@ -135,6 +110,31 @@ export default function CarouselArc({
     setIndex(newIndex);
   };
 
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+    setTouchStart([e.targetTouches[0].clientX, e.targetTouches[0].clientY]);
+  };
+
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) =>
+    setTouchEnd([e.targetTouches[0].clientX, e.targetTouches[0].clientY]);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distanceX = touchEnd[0] - touchStart[0];
+    const distanceY = touchEnd[1] - touchStart[1];
+    const isLeftSwipe =
+      distanceX < -minSwipeDistance &&
+      Math.abs(distanceX) > Math.abs(distanceY);
+    const isRightSwipe =
+      distanceX > minSwipeDistance && Math.abs(distanceX) > Math.abs(distanceY);
+
+    if (isLeftSwipe) {
+      updateIndex(index + 1);
+    } else if (isRightSwipe) {
+      updateIndex(index - 1);
+    }
+  };
+
   const indicators = items.map((_, i) => {
     const dedupeIndex = index % items.length;
     const selected = dedupeIndex === i;
@@ -155,7 +155,17 @@ export default function CarouselArc({
   });
 
   return (
-    <div>
+    <div
+      onTouchStart={(e) => {
+        onTouchStart(e);
+      }}
+      onTouchMove={(e) => {
+        onTouchMove(e);
+      }}
+      onTouchEnd={() => {
+        onTouchEnd();
+      }}
+    >
       <div className='min-h-[260px] lg:min-h-[360px] w-full'>
         <div className='w-[2px] mx-auto relative'>{duplicatedItems}</div>
       </div>

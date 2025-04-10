@@ -77,6 +77,11 @@ function DrinkModal(
 ) {
   // Create a ref and initialize it with null
   const [justEnabled, setJustEnabled] = React.useState(false);
+  const modalContentRef = React.useRef<HTMLDivElement | null>(null);
+
+  const scrollToTop = () => {
+    modalContentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const modalButtons = ['Recipe', 'About'].map((tabName, i) => {
     const selected = i === modalTab;
@@ -116,16 +121,18 @@ function DrinkModal(
     );
   });
 
-  const myRef = React.useRef<HTMLDivElement>(null);
-
   if (justEnabled) {
     setJustEnabled(false);
-    myRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTop();
   }
 
   const ret = (
-    <Modal enabled={modalEnabled} disable={disableModal} scrollRef={myRef}>
-      <div className='text-[#800000]'>
+    <Modal
+      enabled={modalEnabled}
+      disable={disableModal}
+      scrollRef={modalContentRef}
+    >
+      <div className='text-[#800000] relative'>
         <button
           onClick={() => disableModal()}
           className={'text-[#800000] m-2 md:m-4 ' + defaultTitle.className}
@@ -162,32 +169,34 @@ function DrinkModal(
               {modalButtons}
             </div>
 
-            <div className='pb-5'>
-              <div className={'text-2xl ' + neatHandwrittenText.className}>
-                Flavors
+            <div>
+              <div className='pb-5'>
+                <div className={'text-2xl ' + neatHandwrittenText.className}>
+                  Flavors
+                </div>
+                <div>Milk with a kick, rich oak notes with a bit of citrus</div>
               </div>
-              <div>Milk with a kick, rich oak notes with a bit of citrus</div>
-            </div>
 
-            <div className='pb-5'>
-              <div className={'text-2xl ' + neatHandwrittenText.className}>
-                Ingredients
+              <div className='pb-5'>
+                <div className={'text-2xl ' + neatHandwrittenText.className}>
+                  Ingredients
+                </div>
+                <div>1 oz water 1 oz alc</div>
               </div>
-              <div>1 oz water 1 oz alc</div>
-            </div>
 
-            <div className=''>
-              <div className={'text-2xl ' + neatHandwrittenText.className}>
-                Preparation
+              <div className=''>
+                <div className={'text-2xl ' + neatHandwrittenText.className}>
+                  Preparation
+                </div>
+                <ol className='pl-6 list-decimal'>
+                  <li>Milk the cow</li>
+                  <li>Rummage for rum</li>
+                  <li>Milk the cow</li>
+                  <li>Milk the cow</li>
+                  <li>Milk the cow</li>
+                  <li>Milk the cow</li>
+                </ol>
               </div>
-              <ol className='pl-6 list-decimal'>
-                <li>Milk the cow</li>
-                <li>Rummage for rum</li>
-                <li>Milk the cow</li>
-                <li>Milk the cow</li>
-                <li>Milk the cow</li>
-                <li>Milk the cow</li>
-              </ol>
             </div>
           </div>
         </div>
@@ -203,6 +212,18 @@ function DrinkModal(
             {modalRelated}
           </div>
         </div>
+
+        <button
+          type='button'
+          onClick={() => scrollToTop()}
+          className='fixed right-4 bottom-20'
+        >
+          <img
+            src='/images/scroll_button.svg'
+            alt='Scroll to top'
+            width='60px'
+          />
+        </button>
       </div>
     </Modal>
   );
@@ -211,6 +232,39 @@ function DrinkModal(
 }
 
 export default function HomePage() {
+  const [screenSizes, setScreenSizes] = React.useState(['sm', 'md', 'lg']);
+
+  function updateScreenSizes() {
+    const width = window.innerWidth;
+    const newScreenSizes: string[] = [];
+    if (width > 640) {
+      newScreenSizes.push('sm');
+    }
+    if (width > 768) {
+      newScreenSizes.push('md');
+    }
+    if (width > 1024) {
+      newScreenSizes.push('lg');
+    }
+    if (width > 1280) {
+      newScreenSizes.push('xl');
+    }
+    if (width > 1536) {
+      newScreenSizes.push('2xl');
+    }
+    if (screenSizes.length !== newScreenSizes.length) {
+      setScreenSizes(newScreenSizes);
+    }
+  }
+
+  React.useEffect(() => {
+    updateScreenSizes();
+    window.addEventListener('resize', updateScreenSizes);
+    return () => {
+      window.removeEventListener('resize', updateScreenSizes);
+    };
+  });
+
   const [modalEnabled, setModalEnabled] = React.useState(false);
   const [focusDrink, setFocusDrink] = React.useState(
     drinks.mootropolisMilkMunch,
@@ -224,6 +278,7 @@ export default function HomePage() {
     setModalEnabled(true);
     setModalTab(0);
   };
+
   const charityCasinoNightDrinkImages = charityCasinoNightDrinks.map(
     (drink, i) => (
       <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
@@ -298,6 +353,7 @@ export default function HomePage() {
               <CarouselArc
                 items={charityCasinoNightDrinkImages}
                 clickFunctions={charityCasinoNightDrinksClicks}
+                screenSizes={screenSizes}
               />
             </div>
           </section>
@@ -320,6 +376,7 @@ export default function HomePage() {
             <CarouselArc
               items={speakeasyNightDrinkImages}
               clickFunctions={speakeasyNightDrinksClicks}
+              screenSizes={screenSizes}
             />
 
             <div className='w-full text-center px-8 pb-8 sm:pb-10'>
@@ -339,13 +396,16 @@ export default function HomePage() {
             <CarouselArc
               items={charityCasinoNightDrinkImages}
               clickFunctions={charityCasinoNightDrinksClicks}
+              screenSizes={screenSizes}
             />
           </section>
 
           <section
             className={
               'border-t-8 border-[#D0CCA9] bg-[#FEF4D8] rounded-t-[80px] lg:rounded-t-[160px] w-screen px-10 py-20 lg:px-[120px] z-0 text-[#800000] ' +
-              defaultTitle.className
+              (screenSizes.includes('md')
+                ? defaultTitle.className
+                : neatHandwrittenText.className)
             }
           >
             <div className='w-full text-center px-8'>
@@ -362,7 +422,7 @@ export default function HomePage() {
                     <div className='w-6'>
                       <FontAwesomeIcon icon={faDice} className='h-5' />
                     </div>
-                    <div className='mx-auto'>Board game designer</div>
+                    <div className='px-2 mx-auto'>Board game designer</div>
                   </div>
                 </a>
                 <a
@@ -374,7 +434,7 @@ export default function HomePage() {
                     <div className='w-6'>
                       <FontAwesomeIcon icon={faFishFins} className='h-5' />
                     </div>
-                    <div className='mx-auto'>Diving instructor</div>
+                    <div className='px-2 mx-auto'>Diving instructor</div>
                   </div>
                 </a>
                 <a
@@ -386,7 +446,7 @@ export default function HomePage() {
                     <div className='w-6'>
                       <FontAwesomeIcon icon={faMusic} className='h-5' />
                     </div>
-                    <div className='mx-auto'>Jazz musician & arranger</div>
+                    <div className='px-2 mx-auto'>Jazz musician & arranger</div>
                   </div>
                 </a>
                 <a
@@ -398,7 +458,7 @@ export default function HomePage() {
                     <div className='w-6'>
                       <FontAwesomeIcon icon={faPeopleGroup} className='h-5' />
                     </div>
-                    <div className='mx-auto'>Party planner</div>
+                    <div className='px-2 mx-auto'>Party planner</div>
                   </div>
                 </a>
                 <a
@@ -410,7 +470,7 @@ export default function HomePage() {
                     <div className='w-6'>
                       <FontAwesomeIcon icon={faLaptopCode} className='h-5' />
                     </div>
-                    <div className='mx-auto'>Senior software engineer</div>
+                    <div className='px-2 mx-auto'>Senior software engineer</div>
                   </div>
                 </a>
                 <a
@@ -422,7 +482,9 @@ export default function HomePage() {
                     <div className='w-6'>
                       <FontAwesomeIcon icon={faClipboard} className='h-5' />
                     </div>
-                    <div className='mx-auto'>Technical interviewing coach</div>
+                    <div className='px-2 mx-auto'>
+                      Technical interviewing coach
+                    </div>
                   </div>
                 </a>
               </div>

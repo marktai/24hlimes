@@ -11,7 +11,7 @@ type ModalProps = {
   enabled: boolean;
   disable: () => void;
   children?: React.JSX.Element | null;
-  scrollRef: React.MutableRefObject<null>;
+  scrollRef: React.MutableRefObject<HTMLDivElement | null>;
 };
 
 export default function Modal({
