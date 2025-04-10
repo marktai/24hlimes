@@ -70,7 +70,7 @@ export default function CarouselArc({
           relativeIndex === 0
             ? '0px 4px 10px 0px rgba(0, 0, 0, 0.50)'
             : '0px 2px 5px 0px rgba(0, 0, 0, 0.50)',
-        borderRadius: 8,
+        borderRadius: '4%/2%',
       };
 
       if (relativeIndex === 0) {

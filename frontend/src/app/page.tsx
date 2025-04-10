@@ -56,6 +56,7 @@ import {
   charityCasinoNightDrinks,
   drinks,
   DrinkType,
+  modifiers,
   speakeasyNightDrinks,
 } from '@/constant/drinks';
 /**
@@ -66,21 +67,31 @@ import {
  * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
  */
 
-function DrinkModal(
-  modalEnabled: boolean,
-  enableModal: (arg0: DrinkType) => void,
-  focusDrink: DrinkType,
-  setFocusDrink: (arg0: DrinkType) => void,
-  modalTab: number,
-  setModalTab: (arg0: number) => void,
-  disableModal: () => void,
-) {
-  // Create a ref and initialize it with null
-  const [justEnabled, setJustEnabled] = React.useState(false);
+function DrinkModal() {
+  const [modalEnabled, setModalEnabled] = React.useState(false);
+  const [focusDrink, setFocusDrink] = React.useState(
+    drinks.mootropolisMilkMunch,
+  );
+  const [modalTab, setModalTab] = React.useState(0);
+  const [lastFocusDrink, setLastFocusDrink] = React.useState<DrinkType | null>(
+    null,
+  );
   const modalContentRef = React.useRef<HTMLDivElement | null>(null);
 
   const scrollToTop = () => {
     modalContentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const enableModal = (drink: DrinkType) => {
+    setFocusDrink(drink);
+    setModalEnabled(true);
+    scrollToTop();
+    setModalTab(0);
+  };
+
+  const disableModal = () => {
+    setModalEnabled(false);
+    scrollToTop();
   };
 
   const modalButtons = ['Recipe', 'About'].map((tabName, i) => {
@@ -103,27 +114,31 @@ function DrinkModal(
 
   const modalRelated = focusDrink.relatedDrinks.map((drink, i) => {
     return (
-      <button
-        type='button'
-        key={i}
-        onClick={() => {
-          enableModal(drink);
-          setJustEnabled(true);
-        }}
-      >
+      <button type='button' key={i} onClick={() => enableModal(drink)}>
         <img
           src={drink.link}
           alt={drink.name + ' card'}
           width='100%'
-          style={{ rotate: `${(-1) ** i * -4}deg` }}
+          style={{
+            rotate: `${(-1) ** i * -4}deg`,
+            boxShadow: '0px 2px 5px 0px rgba(0, 0, 0, 0.50)',
+            borderRadius: '4%/2%',
+          }}
         />
       </button>
     );
   });
 
-  if (justEnabled) {
-    setJustEnabled(false);
+  if (focusDrink !== lastFocusDrink) {
+    setLastFocusDrink(focusDrink);
     scrollToTop();
+  }
+
+  let titleFont = defaultTitle.className;
+  if (focusDrink.fontStyle === 'neatHandwritten') {
+    titleFont = neatHandwrittenTitle.className;
+  } else if (focusDrink.fontStyle === 'funSerif') {
+    titleFont = serifTitle.className;
   }
 
   const ret = (
@@ -146,6 +161,10 @@ function DrinkModal(
               alt={focusDrink.name + ' card'}
               width='100%'
               className='m-auto transition-none'
+              style={{
+                boxShadow: '0px 4px 10px 0px rgba(0, 0, 0, 0.50)',
+                borderRadius: '2.777%/1.984%',
+              }}
             />
           </div>
           <div className='order-1 sm:order-2 lg:col-span-2 text-[#800000] text-[12px] uppercase'>
@@ -160,9 +179,7 @@ function DrinkModal(
                 Spicy
               </div>
             </div>
-            <div className={'text-5xl ' + neatHandwrittenTitle.className}>
-              {focusDrink.name}
-            </div>
+            <div className={'text-5xl ' + titleFont}>{focusDrink.name}</div>
           </div>
           <div className='order-3 lg:col-span-2'>
             <div className='grid grid-cols-2 gap-10 border-[#800000] border-b-[1px] mb-10'>
@@ -191,10 +208,10 @@ function DrinkModal(
                 <ol className='pl-6 list-decimal'>
                   <li>Milk the cow</li>
                   <li>Rummage for rum</li>
-                  <li>Milk the cow</li>
-                  <li>Milk the cow</li>
-                  <li>Milk the cow</li>
-                  <li>Milk the cow</li>
+                  <li>Catch the cognac</li>
+                  <li>Zest ze lemon</li>
+                  <li>Pick some pandan</li>
+                  <li>Drink</li>
                 </ol>
               </div>
             </div>
@@ -228,7 +245,7 @@ function DrinkModal(
     </Modal>
   );
 
-  return ret;
+  return { component: ret, enableModal: enableModal };
 }
 
 export default function HomePage() {
@@ -265,19 +282,7 @@ export default function HomePage() {
     };
   });
 
-  const [modalEnabled, setModalEnabled] = React.useState(false);
-  const [focusDrink, setFocusDrink] = React.useState(
-    drinks.mootropolisMilkMunch,
-  );
-  const [modalTab, setModalTab] = React.useState(0);
-  const disableModal = () => {
-    setModalEnabled(false);
-  };
-  const enableModal = (drink: DrinkType) => {
-    setFocusDrink(drink);
-    setModalEnabled(true);
-    setModalTab(0);
-  };
+  const { component: drinkModal, enableModal } = DrinkModal();
 
   const charityCasinoNightDrinkImages = charityCasinoNightDrinks.map(
     (drink, i) => (
@@ -297,6 +302,13 @@ export default function HomePage() {
     enableModal(drink);
   });
 
+  const modifierImages = modifiers.map((drink, i) => (
+    <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
+  ));
+  const modifierClicks = modifiers.map((drink) => () => {
+    enableModal(drink);
+  });
+
   return (
     <main
       className={'bg-[#800000] text-[#FEF4D8]' + neatHandwrittenText.className}
@@ -308,15 +320,7 @@ export default function HomePage() {
 
       <Logo />
 
-      {DrinkModal(
-        modalEnabled,
-        enableModal,
-        focusDrink,
-        setFocusDrink,
-        modalTab,
-        setModalTab,
-        disableModal,
-      )}
+      {drinkModal}
       <div className='text-[#FEF4D8]'>
         <div className='layout relative flex flex-col w-full max-w-full'>
           <section className='h-screen lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw] bg-[url(/images/hero_bg.png)] bg-cover bg-center flex items-center justify-center w-screen'>
@@ -345,8 +349,14 @@ export default function HomePage() {
                 Charity Casino Night
               </div>
               <div>
-                Powder pie shortbread gingerbread cotton candy toffee.
-                Strawberry mango puree with cheese foam and chocolate.
+                I threw a{' '}
+                <a
+                  className='text-[#57EFFF] hover:underline'
+                  href='https://casino.marktai.com'
+                >
+                  party where we raised $23,000 for Gaza victims
+                </a>{' '}
+                and also prepared a great cocktail menu!
               </div>
             </div>
             <div className='w-full text-center'>
@@ -369,8 +379,8 @@ export default function HomePage() {
                 Speakeasy Night
               </div>
               <div>
-                Powder pie shortbread gingerbread cotton candy toffee.
-                Strawberry mango puree with cheese foam and chocolate.
+                My friends and I organized a night with puzzle solving as the
+                entry ticket, and I debuted the first 24 Hour Limes menu
               </div>
             </div>
             <CarouselArc
@@ -389,13 +399,13 @@ export default function HomePage() {
                 Modifiers
               </div>
               <div>
-                Powder pie shortbread gingerbread cotton candy toffee.
-                Strawberry mango puree with cheese foam and chocolate.
+                Guests could pick drinks, then add any modifier they wanted to
+                customize their drinks
               </div>
             </div>
             <CarouselArc
-              items={charityCasinoNightDrinkImages}
-              clickFunctions={charityCasinoNightDrinksClicks}
+              items={modifierImages}
+              clickFunctions={modifierClicks}
               screenSizes={screenSizes}
             />
           </section>
