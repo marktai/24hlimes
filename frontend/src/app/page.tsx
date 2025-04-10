@@ -208,7 +208,7 @@ function DrinkModal(
           >
             More drinks
           </div>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-x-[120px] gap-y-[80px]'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-[40px] md:gap-x-[120px] md:gap-y-[80px]'>
             {modalRelated}
           </div>
         </div>
@@ -338,7 +338,7 @@ export default function HomePage() {
             <div className='w-full text-center px-8 pb-8 sm:pb-10'>
               <div
                 className={
-                  'font-bold text-[#57EFFF] text-7xl sm:text-5xl ' +
+                  'font-bold text-[#57EFFF] text-3xl sm:text-5xl md:text-7xl ' +
                   neatHandwrittenTitle.className
                 }
               >
@@ -362,7 +362,7 @@ export default function HomePage() {
             <div className='w-full text-center px-8 pb-8 sm:pb-10'>
               <div
                 className={
-                  'font-bold text-[#29FFA4] text-7xl sm:text-5xl pb-4 ' +
+                  'font-bold text-[#29FFA4] text-3xl sm:text-5xl md:text-7xl pb-4 ' +
                   serifTitle.className
                 }
               >
@@ -382,7 +382,7 @@ export default function HomePage() {
             <div className='w-full text-center px-8 pb-8 sm:pb-10'>
               <div
                 className={
-                  'font-bold text-[#29FFA4] text-7xl sm:text-5xl pb-4 ' +
+                  'font-bold text-[#29FFA4] text-3xl sm:text-5xl md:text-7xl  pb-4 ' +
                   serifTitle.className
                 }
               >
