@@ -310,7 +310,9 @@ function CardModal() {
 
   const details = (
     <div className='text-[16px]'>
-      <div className='grid grid-cols-2 gap-10 border-[#800000] border-b-[1px] mb-10'>
+      <div
+        className={`grid grid-cols-${tabSections.length} gap-10 border-[#800000] border-b-[1px] mb-10`}
+      >
         {modalTabs}
       </div>
 

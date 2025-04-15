@@ -1,10 +1,7 @@
 let imageServer = 'https://dwet0u44zujs6.cloudfront.net/public';
-if (
-  typeof window !== 'undefined' &&
-  window &&
-  window.location &&
-  window.location.hostname === 'localhost'
-) {
+
+const env = process.env.NODE_ENV;
+if (env === 'development') {
   imageServer = '';
 }
 
@@ -75,18 +72,23 @@ export const cards: { [key: string]: DrinkType | CardInterface } = {
     fontStyle: 'neatHandwritten',
     relatedDrinks: [],
     tags: [tags.strong, tags.delicious, tags.markFavorite],
-    flavorBody: 'Milk with a kick, rich oak notes with a bit of citrus',
-    ingredients: ['1 oz water', '1 oz alcohol'],
+    flavorBody: 'Smokey, slightly sweet, satisfying',
+    ingredients: [
+      '1 oz mezcal (400 Conejos Reposado)',
+      '0.5 oz dark rum (Diplomatico)',
+      '10 oz makgeolli (preferably cheap and carbonated)',
+      '1 lime squeezed',
+      '3 drops bitters',
+      'simple syrup to taste',
+    ],
     preparationList: [
-      'Milk the cow',
-      'Rummage for rum',
-      'Catch the cognac',
-      'Zest ze lemon',
-      'Pick some pandan',
-      'Drink',
+      'Mix mezcal, makgeolli, lime juice, and ice',
+      'Add dark rum / more makgeolli / syrup to taste',
+      'Lightly rim the glass with lime juice for aromatics',
+      'Top with bitters',
     ],
     about: [
-      'This drink is by far my most creative drink. Mezcal is a smokier variant of tequila from Oaxaca, and makgeolli is a Korean rice wine with origins from 1000 BC. When combined, the graininess and sweetness of the makgeolli combine perfectly with the mezcal, resulting in a smooth and delightfully complex combo.',
+      'This drink is by far my most creative drink. Mezcal is a smokier variant of tequila from Oaxaca, and makgeolli is a Korean rice wine with origins from 100 BC. When combined, the graininess and sweetness of the makgeolli combine perfectly with the mezcal, resulting in a smooth and delightfully complex combo.',
       'I actually shared this recipe with the owners of Bar Soon in Seoul, and they were absolutely amazed! They told me they only had makgeolli when they were younger and wanted cheap, sweet alcohol. I picked up the cheapest makgeolli from a nearby convenience store, told them the ingredient ratios, and they loved it. A week later, they shared with me their version with whiskey and makgeolli.',
       "If you want a strong, complex drink that combines cultures from around the world, Mark's Mezcal Makgeolli is for you too.",
     ],
