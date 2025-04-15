@@ -57,7 +57,7 @@ export default function Logo({ onClick }: LogoProps) {
   return (
     <button className='fixed p-5 z-10' onClick={() => onClick()}>
       <svg
-        className='transition-[fill] duration-300'
+        className='transition-[all] duration-300'
         height={`${logoHeight}px`}
         viewBox='0 0 111 93'
         fill={fillColor}

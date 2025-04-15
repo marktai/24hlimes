@@ -51,7 +51,7 @@ export default function CarouselArc({
         width = relativeIndex === 0 ? 200 : 160;
       }
 
-      const visibleOnEachSide = Math.min(3, Math.floor((items.length - 1) / 2));
+      const visibleOnEachSide = Math.min(2, Math.floor((items.length - 1) / 2));
       const visible = Math.abs(relativeIndex) <= visibleOnEachSide;
 
       let degreesRotated = 0;
@@ -174,10 +174,10 @@ export default function CarouselArc({
         onTouchEnd();
       }}
     >
-      <div className='min-h-[310px] lg:min-h-[360px] w-full'>
+      <div className='min-h-[310px] lg:min-h-[380px] w-full'>
         <div className='w-[2px] mx-auto relative'>{duplicatedItems}</div>
       </div>
-      <div className='w-full min-h-[40px]'>
+      <div className='w-full min-h-[40px] lg:min-h-[60px]'>
         <div className='absolute z-10 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse left-1/2 '>
           {indicators}
         </div>

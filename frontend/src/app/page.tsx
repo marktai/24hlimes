@@ -53,8 +53,9 @@ import Logo from '@/components/Logo';
 import Modal from '@/components/Modal';
 
 import {
+  CardInterface,
+  cards,
   charityCasinoNightDrinks,
-  drinks,
   DrinkType,
   modifiers,
   speakeasyNightDrinks,
@@ -69,11 +70,11 @@ import {
 
 function Hero() {
   return (
-    <section className='h-screen lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw] bg-[url(/images/hero_bg.png)] bg-cover bg-center flex items-center justify-center w-screen'>
+    <section className='h-screen lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw] bg-[url(/images/hero_bg.jpg)] bg-cover bg-center flex items-center justify-center w-screen'>
       <div className='w-full m-auto text-center pt-8'>
         <span
           className={
-            'font-bold text-[#FEF4D8] text-4xl sm:text-6xl lg:text-[120px]  ' +
+            'font-bold text-[#FEF4D8] text-4xl sm:text-6xl md:text-[80px] lg:text-[120px]  ' +
             defaultTitle.className
           }
         >
@@ -90,47 +91,47 @@ function LogoDivider() {
   );
 }
 function CardDisplays(
-  enableModal: (drink: DrinkType) => void,
+  enableModal: (card: CardInterface) => void,
   screenSizes: string[],
 ) {
   const charityCasinoNightDrinkImages = charityCasinoNightDrinks.map(
-    (drink, i) => (
-      <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
+    (card, i) => (
+      <img key={i} src={card.link} alt={card.name + ' card'} width='100%' />
     ),
   );
   const charityCasinoNightDrinksClicks = charityCasinoNightDrinks.map(
-    (drink) => () => {
-      enableModal(drink);
+    (card) => () => {
+      enableModal(card);
     },
   );
 
-  const speakeasyNightDrinkImages = speakeasyNightDrinks.map((drink, i) => (
-    <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
+  const speakeasyNightDrinkImages = speakeasyNightDrinks.map((card, i) => (
+    <img key={i} src={card.link} alt={card.name + ' card'} width='100%' />
   ));
-  const speakeasyNightDrinksClicks = speakeasyNightDrinks.map((drink) => () => {
-    enableModal(drink);
+  const speakeasyNightDrinksClicks = speakeasyNightDrinks.map((card) => () => {
+    enableModal(card);
   });
 
-  const modifierImages = modifiers.map((drink, i) => (
-    <img key={i} src={drink.link} alt={drink.name + ' card'} width='100%' />
+  const modifierImages = modifiers.map((card, i) => (
+    <img key={i} src={card.link} alt={card.name + ' card'} width='100%' />
   ));
-  const modifierClicks = modifiers.map((drink) => () => {
-    enableModal(drink);
+  const modifierClicks = modifiers.map((card) => () => {
+    enableModal(card);
   });
 
   return (
     <div className='layout relative flex flex-col w-full max-w-full'>
       <section className='border-b-8 border-[#57EFFF] bg-[#00245B] rounded-b-[80px] lg:rounded-b-[160px] mb-[-80px] lg:mb-[-160px] w-screen px-10 pt-14 pb-4 lg:px-[120px] lg:pt-[80px] z-[1] overflow-clip'>
-        <div className='w-full text-center px-8 pb-8 sm:pb-10'>
+        <div className='w-full text-center px-8 pb-8 sm:pb-10 lg:pb-20'>
           <div
             className={
-              'font-bold text-[#57EFFF] text-4xl sm:text-5xl md:text-7xl ' +
+              'font-bold text-[#57EFFF] text-4xl sm:text-5xl md:text-7xl md:pb-4 lg:pb-8 ' +
               neatHandwrittenTitle.className
             }
           >
             Charity Casino Night
           </div>
-          <div>
+          <div className='lg:w-[50%] mx-auto'>
             I threw a{' '}
             <a
               className='text-[#57EFFF] hover:underline'
@@ -151,85 +152,107 @@ function CardDisplays(
       </section>
 
       <section className='border-b-8 border-[#29FFA4] bg-[#0F3022] rounded-b-[80px] lg:rounded-b-[160px] pt-[136px] lg:pt-[280px] w-screen px-10 pb-4 lg:px-[120px] z-0 overflow-clip'>
-        <div className='w-full text-center px-8 pb-8 sm:pb-10'>
-          <div
-            className={
-              'font-bold text-[#29FFA4] text-4xl sm:text-5xl md:text-7xl pb-4 ' +
-              serifTitle.className
-            }
-          >
-            Speakeasy Night
+        <div className='lg:pb-10'>
+          <div className='w-full text-center px-8 pb-8 sm:pb-10 lg:pb-20'>
+            <div
+              className={
+                'font-bold text-[#29FFA4] text-4xl sm:text-5xl md:text-7xl pb-4 md:pb-8 lg:pb-12 ' +
+                serifTitle.className
+              }
+            >
+              Speakeasy Night
+            </div>
+            <div className='lg:w-[50%] mx-auto'>
+              My friends and I organized a night with puzzle solving as the
+              entry ticket, and I debuted the first 24 Hour Limes menu
+            </div>
           </div>
-          <div>
-            My friends and I organized a night with puzzle solving as the entry
-            ticket, and I debuted the first 24 Hour Limes menu
-          </div>
+          <CarouselArc
+            items={speakeasyNightDrinkImages}
+            clickFunctions={speakeasyNightDrinksClicks}
+            screenSizes={screenSizes}
+          />
         </div>
-        <CarouselArc
-          items={speakeasyNightDrinkImages}
-          clickFunctions={speakeasyNightDrinksClicks}
-          screenSizes={screenSizes}
-        />
 
-        <div className='w-full text-center px-8 pb-8 sm:pb-10'>
-          <div
-            className={
-              'font-bold text-[#29FFA4] text-4xl sm:text-5xl md:text-7xl  pb-4 ' +
-              serifTitle.className
-            }
-          >
-            Modifiers
+        <div>
+          <div className='w-full text-center px-8 pb-8 sm:pb-10 lg:pb-20'>
+            <div
+              className={
+                'font-bold text-[#29FFA4] text-4xl sm:text-5xl md:text-7xl pb-4 md:pb-8 lg:pb-12 ' +
+                serifTitle.className
+              }
+            >
+              Modifiers
+            </div>
+            <div className='lg:w-[50%] mx-auto'>
+              Guests could pick drinks, then add any modifier they wanted to
+              customize their drinks
+            </div>
           </div>
-          <div>
-            Guests could pick drinks, then add any modifier they wanted to
-            customize their drinks
-          </div>
+          <CarouselArc
+            items={modifierImages}
+            clickFunctions={modifierClicks}
+            screenSizes={screenSizes}
+          />
         </div>
-        <CarouselArc
-          items={modifierImages}
-          clickFunctions={modifierClicks}
-          screenSizes={screenSizes}
-        />
       </section>
     </div>
   );
 }
 
-function DrinkModal() {
+function CardModal() {
   const [modalEnabled, setModalEnabled] = React.useState(false);
-  const [focusDrink, setFocusDrink] = React.useState(
-    drinks.mootropolisMilkMunch,
-  );
+  const [modalCard, setModalCard] = React.useState(cards.dummy);
   const [modalTab, setModalTab] = React.useState(0);
-  const [lastFocusDrink, setLastFocusDrink] = React.useState<DrinkType | null>(
-    null,
-  );
+  const [lastModalCard, setLastModalCard] =
+    React.useState<CardInterface | null>(null);
   const modalContentRef = React.useRef<HTMLDivElement | null>(null);
 
   const scrollToTop = () => {
     modalContentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const enableModal = (drink: DrinkType) => {
-    setFocusDrink(drink);
+  const enableModal = (card: CardInterface) => {
+    setModalCard(card);
     setModalEnabled(true);
     scrollToTop();
     setModalTab(0);
+    window.history.pushState(card, '', `/#${card.name}`);
   };
 
   const disableModal = () => {
     setModalEnabled(false);
     scrollToTop();
+    window.history.pushState(null, '', '/');
   };
 
-  const modalButtons = ['Recipe', 'About'].map((tabName, i) => {
+  React.useEffect(() => {
+    if (window.location.hash && !modalEnabled) {
+      const foundCard = Object.values(cards).find(
+        (c) => c.name === decodeURI(window.location.hash.slice(1)),
+      );
+      if (foundCard !== undefined) {
+        enableModal(foundCard);
+      }
+    }
+  });
+
+  let modalDrink: DrinkType | null = null;
+
+  if (modalCard.tags) {
+    modalDrink = modalCard as DrinkType;
+  }
+
+  const tabSections = [modalDrink ? 'Recipe' : null, 'About'].filter((x) => x);
+
+  const modalTabs = tabSections.map((tabName, i) => {
     const selected = i === modalTab;
     return (
       <button
         type='button'
         key={i}
         className={
-          'transition border-[#800000] ' +
+          'transition border-[#800000] pb-1 ' +
           (selected ? 'border-b-[3px] mb-[-3px] ' : '') +
           defaultTitle.className
         }
@@ -240,12 +263,12 @@ function DrinkModal() {
     );
   });
 
-  const modalRelated = focusDrink.relatedDrinks.map((drink, i) => {
+  const modalRelated = modalCard.relatedDrinks.map((card, i) => {
     return (
-      <button type='button' key={i} onClick={() => enableModal(drink)}>
+      <button type='button' key={i} onClick={() => enableModal(card)}>
         <img
-          src={drink.link}
-          alt={drink.name + ' card'}
+          src={card.link}
+          alt={card.name + ' card'}
           width='100%'
           style={{
             rotate: `${(-1) ** i * -4}deg`,
@@ -257,17 +280,74 @@ function DrinkModal() {
     );
   });
 
-  if (focusDrink !== lastFocusDrink) {
-    setLastFocusDrink(focusDrink);
+  if (modalCard !== lastModalCard) {
+    setLastModalCard(modalCard);
     scrollToTop();
   }
 
   let titleFont = defaultTitle.className;
-  if (focusDrink.fontStyle === 'neatHandwritten') {
+  if (modalCard.fontStyle === 'neatHandwritten') {
     titleFont = neatHandwrittenTitle.className;
-  } else if (focusDrink.fontStyle === 'funSerif') {
+  } else if (modalCard.fontStyle === 'funSerif') {
     titleFont = serifTitle.className;
   }
+
+  let sectionFont = defaultTitle.className;
+  if (modalCard.fontStyle === 'neatHandwritten') {
+    sectionFont = neatHandwrittenText.className;
+  }
+
+  const tagPills = modalCard.tags?.map((tag, i) => {
+    return (
+      <div
+        className='px-3 py-2 mx-1 justify-center align-middle rounded-[100px] border-[#800000] border-[1px]'
+        key={i}
+      >
+        {tag}
+      </div>
+    );
+  });
+
+  const details = (
+    <div className='text-[16px]'>
+      <div className='grid grid-cols-2 gap-10 border-[#800000] border-b-[1px] mb-10'>
+        {modalTabs}
+      </div>
+
+      <div className={tabSections[modalTab] === 'Recipe' ? '' : 'hidden'}>
+        <div className='pb-5'>
+          <div className={'pb-1 text-2xl ' + sectionFont}>Flavors</div>
+          <div>{modalDrink?.flavorBody}</div>
+        </div>
+
+        <div className='pb-5'>
+          <div className={'pb-1 text-2xl ' + sectionFont}>Ingredients</div>
+          <div>
+            {modalDrink?.ingredients.map((ingredient, i) => (
+              <div key={i}>{ingredient}</div>
+            ))}
+          </div>
+        </div>
+
+        <div className=''>
+          <div className={'pb-1 text-2xl ' + sectionFont}>Preparation</div>
+          <ol className='pl-6 list-decimal'>
+            {modalDrink?.preparationList.map((t, i) => <li key={i}>{t}</li>)}
+          </ol>
+        </div>
+      </div>
+
+      <div className={tabSections[modalTab] === 'About' ? '' : 'hidden'}>
+        <div className='pb-5'>
+          {modalCard?.about.map((a, i) => (
+            <div className='pb-4' key={i}>
+              {a}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 
   const ret = (
     <Modal
@@ -282,11 +362,11 @@ function DrinkModal() {
         >
           ← All drinks
         </button>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-x-8'>
-          <div className='order-2 sm:order-1 row-span-2 lg:h-full pb-4 flex'>
+        <div className='grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-12 xl:gap-y-4'>
+          <div className='order-2 sm:order-1 xl:h-full pb-4 flex'>
             <img
-              src={focusDrink.link}
-              alt={focusDrink.name + ' card'}
+              src={modalCard.link}
+              alt={modalCard.name + ' card'}
               width='100%'
               className='m-auto transition-none'
               style={{
@@ -295,58 +375,19 @@ function DrinkModal() {
               }}
             />
           </div>
-          <div className='order-1 sm:order-2 lg:col-span-2 text-[#800000] text-[12px] uppercase'>
-            <div className='my-6 flex'>
-              <div className='px-3 py-2 mx-1 justify-center align-middle rounded-[100px] border-[#800000] border-[1px]'>
-                Sweet
-              </div>
-              <div className='px-3 py-2 mx-1 justify-center align-middle rounded-[100px] border-[#800000] border-[1px]'>
-                Tart
-              </div>
-              <div className='px-3 py-2 mx-1 justify-center align-middle rounded-[100px] border-[#800000] border-[1px]'>
-                Spicy
-              </div>
+          {/* TODO: top justify rather than center columns */}
+          <div className='order-1 sm:order-2 xl:col-span-2 text-[#800000] text-[12px] pb-4'>
+            <div className={'mb-6 xl:mt-0 flex ' + (tagPills ? '' : 'hidden')}>
+              {tagPills}
             </div>
-            <div className={'text-5xl ' + titleFont}>{focusDrink.name}</div>
+            <div className={'text-5xl sm:pb-4 ' + titleFont}>
+              {modalCard.name}
+            </div>
+            <div className='hidden sm:block'>{details}</div>
           </div>
-          <div className='order-3 lg:col-span-2'>
-            <div className='grid grid-cols-2 gap-10 border-[#800000] border-b-[1px] mb-10'>
-              {modalButtons}
-            </div>
-
-            <div>
-              <div className='pb-5'>
-                <div className={'text-2xl ' + neatHandwrittenText.className}>
-                  Flavors
-                </div>
-                <div>Milk with a kick, rich oak notes with a bit of citrus</div>
-              </div>
-
-              <div className='pb-5'>
-                <div className={'text-2xl ' + neatHandwrittenText.className}>
-                  Ingredients
-                </div>
-                <div>1 oz water 1 oz alc</div>
-              </div>
-
-              <div className=''>
-                <div className={'text-2xl ' + neatHandwrittenText.className}>
-                  Preparation
-                </div>
-                <ol className='pl-6 list-decimal'>
-                  <li>Milk the cow</li>
-                  <li>Rummage for rum</li>
-                  <li>Catch the cognac</li>
-                  <li>Zest ze lemon</li>
-                  <li>Pick some pandan</li>
-                  <li>Drink</li>
-                </ol>
-              </div>
-            </div>
-          </div>
+          <div className='order-3 xl:col-span-3 block sm:hidden'>{details}</div>
         </div>
-
-        <div className='w-full h-[13px] my-[60px] bg-[url(/images/divider.svg)] bg-fill bg-center' />
+        <div className='w-full h-[15px] my-[60px] bg-[url(/images/divider.svg)] bg-fill bg-center' />
         <div>
           <div
             className={'text-2xl pb-10 text-center ' + defaultTitle.className}
@@ -382,7 +423,7 @@ function OtherFunThings(screenSizes: string[]) {
       <div className='w-full text-center px-8'>
         <div
           className={
-            'font-bold text-3xl sm:text-5xl lg:text-7xl pb-4 ' +
+            'font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl pb-4 md:pb-6 lg:pb-8 ' +
             defaultTitle.className
           }
         >
@@ -395,9 +436,11 @@ function OtherFunThings(screenSizes: string[]) {
               ? defaultTitle.className
               : neatHandwrittenText.className)
           }
+          style={{ letterSpacing: screenSizes.includes('md') ? '0.1px' : '' }}
         >
           <a
             type='button'
+            target='_blank'
             href='https://boardgames.marktai.com'
             className='border-[#800000] border-[1px]'
           >
@@ -410,6 +453,7 @@ function OtherFunThings(screenSizes: string[]) {
           </a>
           <a
             type='button'
+            target='_blank'
             href='https://diving.marktai.com'
             className='border-[#800000] border-[1px] border-t-0 lg:border-t-[1px] lg:border-l-0'
           >
@@ -422,6 +466,7 @@ function OtherFunThings(screenSizes: string[]) {
           </a>
           <a
             type='button'
+            target='_blank'
             href='https://music.marktai.com'
             className='border-[#800000] border-[1px] border-t-0 lg:border-t-0 xl:border-t-[1px] xl:border-l-0'
           >
@@ -434,6 +479,7 @@ function OtherFunThings(screenSizes: string[]) {
           </a>
           <a
             type='button'
+            target='_blank'
             href='https://casino.marktai.com'
             className='border-[#800000] border-[1px] border-t-0 lg:border-l-0 lg:border-t-0 xl:border-l-[1px]'
           >
@@ -446,6 +492,7 @@ function OtherFunThings(screenSizes: string[]) {
           </a>
           <a
             type='button'
+            target='_blank'
             href='https://resume.marktai.com'
             className='border-[#800000] border-[1px] border-t-0 lg:border-t-0 xl:border-l-0'
           >
@@ -458,6 +505,7 @@ function OtherFunThings(screenSizes: string[]) {
           </a>
           <a
             type='button'
+            target='_blank'
             href='https://interviewing.marktai.com'
             className='border-[#800000] border-[1px] border-t-0 lg:border-l-0 lg:border-t-0'
           >
@@ -508,7 +556,7 @@ export default function HomePage() {
     };
   });
 
-  const { component: drinkModal, enableModal } = DrinkModal();
+  const { component: cardModal, enableModal } = CardModal();
 
   return (
     <main
@@ -524,8 +572,9 @@ export default function HomePage() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       />
+      {/* <div className='fixed left-[50%] z-50 border-l-[1px] py-32'></div> */}
 
-      {drinkModal}
+      {cardModal}
       <div className='text-[#FEF4D8]'>
         <div className='layout relative flex flex-col w-full max-w-full'>
           {Hero()}
