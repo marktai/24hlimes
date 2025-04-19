@@ -292,15 +292,10 @@ function CardModal() {
     titleFont = serifTitle.className;
   }
 
-  let sectionFont = defaultTitle.className;
-  if (modalCard.fontStyle === 'neatHandwritten') {
-    sectionFont = neatHandwrittenText.className;
-  }
-
   const tagPills = modalCard.tags?.map((tag, i) => {
     return (
       <div
-        className='px-3 py-2 mx-1 justify-center align-middle rounded-[100px] border-[#800000] border-[1px]'
+        className='px-3 py-2 mx-1 justify-center align-middle rounded-[100px] border-[#800000] border-[1px] uppercase'
         key={i}
       >
         {tag}
@@ -318,12 +313,12 @@ function CardModal() {
 
       <div className={tabSections[modalTab] === 'Recipe' ? '' : 'hidden'}>
         <div className='pb-5'>
-          <div className={'pb-1 text-2xl ' + sectionFont}>Flavors</div>
+          <div className='pb-1 text-2xl'>Flavors</div>
           <div>{modalDrink?.flavorBody}</div>
         </div>
 
         <div className='pb-5'>
-          <div className={'pb-1 text-2xl ' + sectionFont}>Ingredients</div>
+          <div className='pb-1 text-2xl'>Ingredients</div>
           <div>
             {modalDrink?.ingredients.map((ingredient, i) => (
               <div key={i}>{ingredient}</div>
@@ -332,7 +327,7 @@ function CardModal() {
         </div>
 
         <div className=''>
-          <div className={'pb-1 text-2xl ' + sectionFont}>Preparation</div>
+          <div className='pb-1 text-2xl'>Preparation</div>
           <ol className='pl-6 list-decimal'>
             {modalDrink?.preparationList.map((t, i) => <li key={i}>{t}</li>)}
           </ol>
@@ -370,7 +365,7 @@ function CardModal() {
               src={modalCard.link}
               alt={modalCard.name + ' card'}
               width='100%'
-              className='m-auto transition-none'
+              className='mx-auto mt-0 mb-auto transition-none'
               style={{
                 boxShadow: '0px 4px 10px 0px rgba(0, 0, 0, 0.50)',
                 borderRadius: '3.4%/2.42%',
@@ -378,8 +373,13 @@ function CardModal() {
             />
           </div>
           {/* TODO: top justify rather than center columns */}
-          <div className='order-1 sm:order-2 xl:col-span-2 text-[#800000] text-[12px] pb-4'>
-            <div className={'mb-6 xl:mt-0 flex ' + (tagPills ? '' : 'hidden')}>
+          <div className='order-1 sm:order-2 xl:col-span-2 text-[#800000] pb-4'>
+            <div
+              className={
+                'mb-6 xl:mt-0 flex text-[14px] uppercase ' +
+                (tagPills ? '' : 'hidden')
+              }
+            >
               {tagPills}
             </div>
             <div className={'text-5xl sm:pb-4 ' + titleFont}>

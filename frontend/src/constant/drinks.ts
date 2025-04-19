@@ -33,6 +33,7 @@ export const tags: { [key: string]: string } = {
   sweet: 'Sweet',
   sour: 'Sour',
   strong: 'Strong',
+  spiced: 'Spiced',
   mocktail: 'Mocktail',
   delicious: 'Delicious',
   markFavorite: 'Mark Favorite',
@@ -71,7 +72,7 @@ export const cards: { [key: string]: DrinkType | CardInterface } = {
     flavorText: 'My travels in a glass',
     fontStyle: 'neatHandwritten',
     relatedDrinks: [],
-    tags: [tags.strong, tags.delicious, tags.markFavorite],
+    tags: [tags.strong, tags.delicious, tags.spiced, tags.markFavorite],
     flavorBody: 'Smokey, slightly sweet, satisfying',
     ingredients: [
       '1 oz mezcal (400 Conejos Reposado)',
@@ -160,7 +161,7 @@ export const cards: { [key: string]: DrinkType | CardInterface } = {
     flavorText: 'Big, bold, and beautiful',
     fontStyle: 'funSerif',
     relatedDrinks: [],
-    tags: [tags.sour],
+    tags: [tags.sour, tags.spiced],
     flavorBody: 'Milk with a kick, rich oak notes with a bit of citrus',
     ingredients: ['1 oz water', '1 oz alcohol'],
     preparationList: [
@@ -464,3 +465,13 @@ export const modifiers = [
   cards.alcoholFree,
   cards.markTwist,
 ];
+
+export const tagsToModifier = {
+  [tags.sweet]: cards.sweet,
+  [tags.sour]: cards.sour,
+  [tags.strong]: cards.strong,
+  [tags.spiced]: cards.spicy,
+  [tags.mocktail]: cards.alcoholFree,
+  [tags.delicious]: cards.sweet,
+  [tags.markFavorite]: cards.markTwist,
+};
