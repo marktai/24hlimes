@@ -48,6 +48,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import injectLinks from '@/lib/injectLinks';
+
 import CarouselArc from '@/components/CarouselArc';
 import Logo from '@/components/Logo';
 import Modal from '@/components/Modal';
@@ -339,7 +341,7 @@ function CardModal() {
         <div className='pb-5'>
           {modalCard?.about.map((a, i) => (
             <div className='pb-4' key={i}>
-              {a}
+              {injectLinks(a)}
             </div>
           ))}
         </div>
