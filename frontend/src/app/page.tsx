@@ -446,7 +446,7 @@ function OtherFunThings(screenSizes: string[]) {
             href='https://boardgames.marktai.com'
             className='border-[#800000] border-[1px]'
           >
-            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] text-[#800000] hover:text-[#FEF4D8]'>
               <div className='w-6'>
                 <FontAwesomeIcon icon={faDice} className='h-5' />
               </div>
@@ -459,7 +459,7 @@ function OtherFunThings(screenSizes: string[]) {
             href='https://diving.marktai.com'
             className='border-[#800000] border-[1px] border-t-0 lg:border-t-[1px] lg:border-l-0'
           >
-            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] text-[#800000] hover:text-[#FEF4D8]'>
               <div className='w-6'>
                 <FontAwesomeIcon icon={faFishFins} className='h-5' />
               </div>
@@ -472,7 +472,7 @@ function OtherFunThings(screenSizes: string[]) {
             href='https://music.marktai.com'
             className='border-[#800000] border-[1px] border-t-0 lg:border-t-0 xl:border-t-[1px] xl:border-l-0'
           >
-            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] text-[#800000] hover:text-[#FEF4D8]'>
               <div className='w-6'>
                 <FontAwesomeIcon icon={faMusic} className='h-5' />
               </div>
@@ -485,7 +485,7 @@ function OtherFunThings(screenSizes: string[]) {
             href='https://casino.marktai.com'
             className='border-[#800000] border-[1px] border-t-0 lg:border-l-0 lg:border-t-0 xl:border-l-[1px]'
           >
-            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] text-[#800000] hover:text-[#FEF4D8]'>
               <div className='w-6'>
                 <FontAwesomeIcon icon={faPeopleGroup} className='h-5' />
               </div>
@@ -498,7 +498,7 @@ function OtherFunThings(screenSizes: string[]) {
             href='https://resume.marktai.com'
             className='border-[#800000] border-[1px] border-t-0 lg:border-t-0 xl:border-l-0'
           >
-            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] text-[#800000] hover:text-[#FEF4D8]'>
               <div className='w-6'>
                 <FontAwesomeIcon icon={faLaptopCode} className='h-5' />
               </div>
@@ -511,7 +511,7 @@ function OtherFunThings(screenSizes: string[]) {
             href='https://interviewing.marktai.com'
             className='border-[#800000] border-[1px] border-t-0 lg:border-l-0 lg:border-t-0'
           >
-            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] hover:text-[#FEF4D8]'>
+            <div className='px-4 py-3 flex hover:rounded-[32px] hover:bg-[#800000] text-[#800000] hover:text-[#FEF4D8]'>
               <div className='w-6'>
                 <FontAwesomeIcon icon={faClipboard} className='h-5' />
               </div>
