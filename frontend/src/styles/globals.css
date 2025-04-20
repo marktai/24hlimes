@@ -94,3 +94,11 @@
 body {
   background-image: #800000;
 }
+
+a {
+  color: #00245b;
+}
+
+a:hover {
+  text-decoration: underline;
+}

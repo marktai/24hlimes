@@ -135,10 +135,7 @@ function CardDisplays(
           </div>
           <div className='lg:w-[50%] mx-auto'>
             I threw a{' '}
-            <a
-              className='text-[#57EFFF] hover:underline'
-              href='https://casino.marktai.com'
-            >
+            <a className='text-[#57EFFF]' href='https://casino.marktai.com'>
               party where we raised $23,000 for Gaza victims
             </a>{' '}
             and also prepared a great cocktail menu!
