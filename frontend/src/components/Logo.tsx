@@ -18,32 +18,34 @@ export default function Logo({ onClick }: LogoProps) {
 
   // create element ref
 
-  useEffect(() => {
-    function updateLogoColor() {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      //   <div className='border-b-2 h-screen lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw] bg-[url(/images/hero_bg.png)] bg-cover bg-center flex items-center justify-center w-screen'>
-      let heroHeight = height;
-      let logoHeight = 60;
-      if (width > 640) {
-        // small
-        heroHeight = Math.max(heroHeight, 400);
-      }
-      if (width > 1024) {
-        // large
-        heroHeight = Math.max(heroHeight, 600);
-        logoHeight = 93;
-      }
-      setLogoHeight(logoHeight);
-
-      const scrollTop = window.scrollY + logoHeight;
-      heroHeight = Math.min(heroHeight, width);
-      if (scrollTop < heroHeight) {
-        setFillColor('#CA0003');
-      } else if (scrollTop >= heroHeight) {
-        setFillColor('white');
-      }
+  function updateLogoColor() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    //   <div className='border-b-2 h-screen lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw] bg-[url(/images/hero_bg.png)] bg-cover bg-center flex items-center justify-center w-screen'>
+    let heroHeight = height;
+    let logoHeight = 60;
+    if (width > 640) {
+      // small
+      heroHeight = Math.max(heroHeight, 400);
     }
+    if (width > 1024) {
+      // large
+      heroHeight = Math.max(heroHeight, 600);
+      logoHeight = 93;
+    }
+    setLogoHeight(logoHeight);
+
+    const scrollTop = window.scrollY + logoHeight;
+    heroHeight = Math.min(heroHeight, width);
+    if (scrollTop < heroHeight) {
+      setFillColor('#CA0003');
+    } else if (scrollTop >= heroHeight) {
+      setFillColor('white');
+    }
+  }
+
+  useEffect(() => {
+    updateLogoColor();
 
     window.addEventListener('scroll', updateLogoColor);
     window.addEventListener('resize', updateLogoColor);

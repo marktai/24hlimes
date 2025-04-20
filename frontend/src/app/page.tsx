@@ -70,11 +70,11 @@ import {
 
 function Hero() {
   return (
-    <section className='h-screen lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw] bg-[url(/images/hero_bg.jpg)] bg-cover bg-center flex items-center justify-center w-screen'>
+    <section className='h-screen lg:min-h-[600px] sm:min-h-[400px] max-h-[100vw] bg-[url(/images/hero_bg.svg)] bg-cover bg-center flex items-center justify-center w-screen'>
       <div className='w-full m-auto text-center pt-8'>
         <span
           className={
-            'font-bold text-[#FEF4D8] text-4xl sm:text-6xl md:text-[80px] lg:text-[120px]  ' +
+            'font-bold text-[#FEF4D8] text-[2.6rem] sm:text-6xl md:text-[80px] lg:text-[120px]  ' +
             defaultTitle.className
           }
         >
@@ -304,6 +304,7 @@ function CardModal() {
   });
 
   const details = (
+    // TODO(mark): try to transition height of content
     <div className='text-[16px]'>
       <div
         className={`grid grid-cols-${tabSections.length} gap-10 border-[#800000] border-b-[1px] mb-10`}
@@ -373,10 +374,10 @@ function CardModal() {
             />
           </div>
           {/* TODO: top justify rather than center columns */}
-          <div className='order-1 sm:order-2 xl:col-span-2 text-[#800000] pb-4'>
+          <div className='order-1 sm:order-2 xl:col-span-2 text-[#800000] sm:pb-4'>
             <div
               className={
-                'mb-6 xl:mt-0 flex text-[14px] uppercase ' +
+                'mt-2 sm:mt-0 mb-3 sm:mb-6 xl:mt-0 flex text-[14px] uppercase ' +
                 (tagPills ? '' : 'hidden')
               }
             >

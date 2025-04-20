@@ -109,11 +109,7 @@ export default function CarouselArc({
     if (newIndex >= duplicatedItems.length) {
       newIndex = newIndex % duplicatedItems.length;
     } else if (newIndex < 0) {
-      newIndex =
-        Math.ceil(newIndex / duplicatedItems.length) *
-          -1 *
-          duplicatedItems.length +
-        newIndex;
+      newIndex = newIndex + duplicatedItems.length;
     }
     setIndex(newIndex);
   };
@@ -147,7 +143,15 @@ export default function CarouselArc({
     const dedupeIndex = index % items.length;
     const selected = dedupeIndex === i;
     const onClick = () => {
-      setIndex(index - dedupeIndex + i);
+      const target = index - (dedupeIndex - i);
+      // smallest movement
+      // if (i - dedupeIndex > items.length / 2){
+      //   target -= items.length;
+      // } else if (i - dedupeIndex < -items.length / 2){
+      //   target += items.length;
+      // }
+
+      updateIndex(target);
     };
     return (
       <button
