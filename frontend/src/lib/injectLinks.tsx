@@ -13,7 +13,7 @@ export default function injectLinks(s: string): React.JSX.Element {
     elements.push(<span key={index}>{s.slice(index, foundIndex)}</span>);
     elements.push(
       <span key={foundIndex}>
-        <a href={urlString.groups?.link} target='_blank'>
+        <a className='normal' href={urlString.groups?.link} target='_blank'>
           {urlString.groups?.text}
         </a>
       </span>,

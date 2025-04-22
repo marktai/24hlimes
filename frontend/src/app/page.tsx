@@ -39,6 +39,7 @@ const serifTitle = Abril_Fatface({
 });
 
 import {
+  faArrowLeft,
   faClipboard,
   faDice,
   faFishFins,
@@ -124,7 +125,7 @@ function CardDisplays(
   return (
     <div className='layout relative flex flex-col w-full max-w-full'>
       <section className='border-b-8 border-[#57EFFF] bg-[#00245B] rounded-b-[80px] lg:rounded-b-[160px] mb-[-80px] lg:mb-[-160px] w-screen px-10 pt-14 pb-4 lg:px-[120px] lg:pt-[80px] z-[1] overflow-clip'>
-        <div className='w-full text-center px-8 pb-8 sm:pb-10 lg:pb-20'>
+        <div className='w-full text-center px-8 pb-8 sm:pb-10 lg:pb-12'>
           <div
             className={
               'font-bold text-[#57EFFF] text-4xl sm:text-5xl md:text-7xl md:pb-4 lg:pb-8 ' +
@@ -135,7 +136,11 @@ function CardDisplays(
           </div>
           <div className='lg:w-[50%] mx-auto'>
             I threw a{' '}
-            <a className='text-[#57EFFF]' href='https://casino.marktai.com'>
+            <a
+              className='hover:underline text-[#57EFFF]'
+              target='_blank'
+              href='https://casino.marktai.com'
+            >
               party where we raised $23,000 for Gaza victims
             </a>{' '}
             and also prepared a great cocktail menu!
@@ -152,7 +157,7 @@ function CardDisplays(
 
       <section className='border-b-8 border-[#29FFA4] bg-[#0F3022] rounded-b-[80px] lg:rounded-b-[160px] pt-[136px] lg:pt-[280px] w-screen px-10 pb-4 lg:px-[120px] z-0 overflow-clip'>
         <div className='lg:pb-10'>
-          <div className='w-full text-center px-8 pb-8 sm:pb-10 lg:pb-20'>
+          <div className='w-full text-center px-8 pb-8 sm:pb-10 lg:pb-12'>
             <div
               className={
                 'font-bold text-[#29FFA4] text-4xl sm:text-5xl md:text-7xl pb-4 md:pb-8 lg:pb-12 ' +
@@ -174,7 +179,7 @@ function CardDisplays(
         </div>
 
         <div>
-          <div className='w-full text-center px-8 pb-8 sm:pb-10 lg:pb-20'>
+          <div className='w-full text-center px-8 pb-8 sm:pb-10 lg:pb-12'>
             <div
               className={
                 'font-bold text-[#29FFA4] text-4xl sm:text-5xl md:text-7xl pb-4 md:pb-8 lg:pb-12 ' +
@@ -266,12 +271,12 @@ function CardModal() {
     return (
       <button type='button' key={i} onClick={() => enableModal(card)}>
         <img
+          className='transition-all duration-300 shadow-[0px_2px_5px_0px_rgba(0,0,0,0.50)] hover:shadow-[0px_4px_10px_0px_rgba(128,0,0,0.50)]'
           src={card.link}
           alt={card.name + ' card'}
           width='100%'
           style={{
             rotate: `${(-1) ** i * -4}deg`,
-            boxShadow: '0px 2px 5px 0px rgba(0, 0, 0, 0.50)',
             borderRadius: '3.4%/2.42%',
           }}
         />
@@ -294,7 +299,7 @@ function CardModal() {
   const tagPills = modalCard.tags?.map((tag, i) => {
     return (
       <div
-        className='px-3 py-2 mx-1 justify-center align-middle rounded-[100px] border-[#800000] border-[1px] uppercase'
+        className='px-[10px] sm:px-[12px] py-[8px] sm:py-[10px] mx-1 justify-center align-middle rounded-[100px] border-[#800000] border-[1px] uppercase'
         key={i}
       >
         {tag}
@@ -355,9 +360,12 @@ function CardModal() {
       <div className='text-[#800000] relative'>
         <button
           onClick={() => disableModal()}
-          className={'text-[#800000] m-2 md:m-4 ' + defaultTitle.className}
+          className={
+            'text-[#800000] hover:text-[#CA0003] mb-4 md:mb-10 ' +
+            defaultTitle.className
+          }
         >
-          ← All drinks
+          <FontAwesomeIcon icon={faArrowLeft} className='h-4 pr-2' /> All drinks
         </button>
         <div className='grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-12 xl:gap-y-4'>
           <div className='order-2 sm:order-1 xl:h-full pb-4 flex'>
@@ -376,7 +384,7 @@ function CardModal() {
           <div className='order-1 sm:order-2 xl:col-span-2 text-[#800000] sm:pb-4'>
             <div
               className={
-                'mt-2 sm:mt-0 mb-3 sm:mb-6 xl:mt-0 flex text-[14px] uppercase ' +
+                'mt-2 sm:mt-0 mb-3 sm:mb-6 xl:mt-0 flex text-[12px] sm:text-[14px] uppercase ' +
                 (tagPills ? '' : 'hidden')
               }
             >
@@ -425,7 +433,7 @@ function OtherFunThings(screenSizes: string[]) {
       <div className='w-full text-center px-8'>
         <div
           className={
-            'font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl pb-4 md:pb-6 lg:pb-8 ' +
+            'font-bold text-3xl sm:text-4xl md:text-[40px] pb-4 md:pb-6 lg:pb-8 ' +
             defaultTitle.className
           }
         >
@@ -562,7 +570,7 @@ export default function HomePage() {
 
   return (
     <main
-      className={'bg-[#800000] text-[#FEF4D8]' + neatHandwrittenText.className}
+      className={'bg-[#800000] text-[#FEF4D8] ' + neatHandwrittenText.className}
     >
       <Head>
         <title>24hlimes</title>

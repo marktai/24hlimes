@@ -70,10 +70,6 @@ export default function CarouselArc({
         width: `${width}px`,
         zIndex: relativeIndex === 0 ? '5' : '0',
         opacity: visible ? 100 : 0, // hides offscreen cards jumping from one side to the other
-        boxShadow:
-          relativeIndex === 0
-            ? '0px 4px 10px 0px rgba(0, 0, 0, 0.50)'
-            : '0px 2px 5px 0px rgba(0, 0, 0, 0.50)',
         borderRadius: '3.4%/2.42%',
       };
 
@@ -89,11 +85,15 @@ export default function CarouselArc({
         }
       };
 
+      // TODO: allow styles from parent
       return (
         <button
           className={
             'absolute transition-all duration-300 -translate-x-1/2 ' +
-            (visible ? '' : 'cursor-default')
+            (visible ? '' : 'cursor-default ') +
+            (relativeIndex === 0
+              ? 'shadow-[0px_4px_10px_0px_rgba(0,0,0,0.50)] hover:shadow-[0px_4px_10px_0px_rgba(255,255,255,0.50)]'
+              : 'shadow-[0px_2px_5px_0px_rgba(0,0,0,0.50)] hover:shadow-[0px_2px_5px_0px_rgba(255,255,255,0.50)]')
           }
           type='button'
           style={style}
@@ -178,7 +178,7 @@ export default function CarouselArc({
         onTouchEnd();
       }}
     >
-      <div className='min-h-[310px] lg:min-h-[380px] w-full'>
+      <div className='min-h-[310px] lg:min-h-[360px] w-full'>
         <div className='w-[2px] mx-auto relative'>{duplicatedItems}</div>
       </div>
       <div className='w-full min-h-[40px] lg:min-h-[60px]'>

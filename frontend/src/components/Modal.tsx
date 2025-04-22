@@ -48,7 +48,7 @@ export default function Modal({
             onClick={(e) => {
               e.stopPropagation();
             }}
-            className='bg-[#FEF4D8] w-full max-h-full overflow-y-scroll md:rounded-l-[80px] rounded-b-[80px] md:rounded-r-none [@media(max-height:800px)]:md:rounded-b-none p-12 border-[#CA0003] border-b-8 md:border-b-0 md:border-l-8 '
+            className='bg-[#FEF4D8] w-full max-h-full overflow-y-scroll md:rounded-l-[80px] rounded-b-[80px] md:rounded-r-none [@media(max-height:800px)]:md:rounded-b-none p-6 md:p-[80px] border-[#CA0003] border-b-8 md:border-b-0 md:border-l-8 '
             style={{ overscrollBehavior: 'contain' }}
             ref={scrollRef}
           >

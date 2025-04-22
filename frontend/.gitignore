@@ -43,3 +43,4 @@ sitemap-*.xml
 
 # deploy packages
 *.tar.gz
+build_timestamp.txt

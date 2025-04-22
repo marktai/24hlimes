@@ -95,10 +95,10 @@ body {
   background-image: #800000;
 }
 
-a {
+a.normal {
   color: #00245b;
 }
 
-a:hover {
+a.normal:hover {
   text-decoration: underline;
 }

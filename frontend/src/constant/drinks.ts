@@ -98,6 +98,7 @@ export const cards: { [key: string]: DrinkType | CardInterface } = {
     about: [
       'This drink is by far my most creative drink. Mezcal is a smokier variant of tequila from Oaxaca, and makgeolli is a Korean rice wine with origins from 100 BC. When combined, the graininess and sweetness of the makgeolli combine perfectly with the mezcal, resulting in a smooth and delightfully complex combo.',
       'I actually shared this recipe with 소영 and 상현, the owners of [Bar Soon](https://maps.app.goo.gl/K3TtB9v47XgNc1Ls7) in Seoul, and they were absolutely amazed! They told me they only drank makgeolli when they were younger and wanted cheap, sweet alcohol. I picked up the cheapest makgeolli from a nearby convenience store, told them the ingredient ratios, and they loved it. A week later, they shared with me their version with whiskey and makgeolli.',
+      'When designing the card for this drink, I put in "Some Filler Text" to fill out the description, but then completely forgot to fix it! Only one person commented on it the entire night, so I left it in as a fun Easter egg, since it didn\'t seem like people noticed.',
       "If you want a strong, complex drink that combines cultures from around the world, Mark's Mezcal Makgeolli is for you too.",
     ],
   },
@@ -518,17 +519,17 @@ cards.alcoholFree.relatedDrinks = [
 ];
 
 export const charityCasinoNightDrinks = [
-  cards.mootropolisMilkMunch,
   cards.marksMezcalMakgeolli,
+  cards.mootropolisMilkMunch,
   cards.mangoMimosaMocktail,
 ];
 
 export const speakeasyNightDrinks = [
-  cards.lindIslandIcedTea,
   cards.pizzaSour,
   cards.comeFlyWithMark,
-  cards.darkAndZhangy,
   cards.jaisTwoFacedTea,
+  cards.darkAndZhangy,
+  cards.lindIslandIcedTea,
   cards.burbankBonkey,
 ];
 
