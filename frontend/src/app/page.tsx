@@ -77,7 +77,7 @@ function Hero() {
       <div className='w-full m-auto text-center pt-8'>
         <span
           className={
-            'font-bold text-[#FEF4D8] text-[2.6rem] sm:text-6xl md:text-[80px] lg:text-[120px]  ' +
+            'font-bold text-[#FEF4D8] text-[2.6rem] sm:text-6xl md:text-[80px] lg:text-[120px] 2xl:text-[160px] ' +
             defaultTitle.className
           }
         >
@@ -357,7 +357,7 @@ function CardModal() {
       disable={disableModal}
       scrollRef={modalContentRef}
     >
-      <div className='text-[#800000] relative'>
+      <div className='text-[#800000] relative max-w-[1600px] mx-auto'>
         <button
           onClick={() => disableModal()}
           className={
@@ -367,7 +367,7 @@ function CardModal() {
         >
           <FontAwesomeIcon icon={faArrowLeft} className='h-4 pr-2' /> All drinks
         </button>
-        <div className='grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-x-12 xl:gap-y-4'>
+        <div className='grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-x-12 sm:gap-y-4 md:gap-x-12 md:gap-y-8 xl:gap-x-20 xl-gap-12'>
           <div className='order-2 sm:order-1 xl:h-full pb-4 flex'>
             <img
               src={modalCard.link}
@@ -384,13 +384,13 @@ function CardModal() {
           <div className='order-1 sm:order-2 xl:col-span-2 text-[#800000] sm:pb-4'>
             <div
               className={
-                'mt-2 sm:mt-0 mb-3 sm:mb-6 xl:mt-0 flex text-[12px] sm:text-[14px] uppercase ' +
+                'mt-2 sm:mt-0 mb-3 flex text-[12px] sm:text-[11px] xl:text-[14px] uppercase ' +
                 (tagPills ? '' : 'hidden')
               }
             >
               {tagPills}
             </div>
-            <div className={'text-5xl sm:pb-4 ' + titleFont}>
+            <div className={'text-5xl sm:py-4 lg:py-6 2xl-py-8 ' + titleFont}>
               {modalCard.name}
             </div>
             <div className='hidden sm:block'>{details}</div>
@@ -441,7 +441,7 @@ function OtherFunThings(screenSizes: string[]) {
         </div>
         <div
           className={
-            'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 text-[12px] sm:text-[16px] ' +
+            'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 text-[12px] sm:text-[16px] max-w-[1100px] mx-auto ' +
             (screenSizes.includes('md')
               ? defaultTitle.className
               : neatHandwrittenText.className)
