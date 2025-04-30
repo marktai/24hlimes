@@ -299,7 +299,10 @@ function CardModal() {
   const tagPills = modalCard.tags?.map((tag, i) => {
     return (
       <div
-        className='px-[10px] sm:px-[12px] py-[8px] sm:py-[10px] mx-1 justify-center align-middle rounded-[100px] border-[#800000] border-[1px] uppercase'
+        className={
+          (i === 0 ? '' : 'ml-1 lg:ml-2') +
+          'mr-1 lg:mr-2 px-[10px] sm:px-[12px] py-[6px] sm:py-[8px]  justify-center align-middle rounded-[100px] border-[#800000] border-[1px] uppercase'
+        }
         key={i}
       >
         {tag}
@@ -384,13 +387,13 @@ function CardModal() {
           <div className='order-1 sm:order-2 xl:col-span-2 text-[#800000] sm:pb-4'>
             <div
               className={
-                'mt-2 sm:mt-0 mb-3 flex text-[12px] sm:text-[11px] xl:text-[14px] uppercase ' +
+                'mt-2 sm:mt-0 flex text-[12px] sm:text-[11px] xl:text-[14px] uppercase ' +
                 (tagPills ? '' : 'hidden')
               }
             >
               {tagPills}
             </div>
-            <div className={'text-5xl sm:py-4 lg:py-6 2xl-py-8 ' + titleFont}>
+            <div className={'text-5xl sm:py-4 lg:py-8 2xl-py-10 ' + titleFont}>
               {modalCard.name}
             </div>
             <div className='hidden sm:block'>{details}</div>
@@ -425,6 +428,31 @@ function CardModal() {
   );
 
   return { component: ret, enableModal: enableModal };
+}
+
+function Credits() {
+  return (
+    <div className='grid grid-cols-1 sm:grid-cols-2 py-4 min-h-[100px] sm:gap-x-8'>
+      <div className='mx-auto py-2 sm:ml-auto sm:mr-0 my-auto'>
+        Visual designer:{' '}
+        <a
+          className='hover:underline text-[#57EFFF]'
+          href='https://www.linkedin.com/in/juliannevinh/'
+        >
+          Julianne Vinh
+        </a>
+      </div>
+      <div className='mx-auto py-2 sm:ml-0 sm:mr-auto my-auto'>
+        Illustrator:{' '}
+        <a
+          className='hover:underline text-[#57EFFF]'
+          href='https://michellestam.com'
+        >
+          Michelle Tam
+        </a>
+      </div>
+    </div>
+  );
 }
 
 function OtherFunThings(screenSizes: string[]) {
@@ -590,6 +618,7 @@ export default function HomePage() {
           {Hero()}
           {LogoDivider()}
           {CardDisplays(enableModal, screenSizes)}
+          {Credits()}
           {OtherFunThings(screenSizes)}
           {LogoDivider()}
         </div>
