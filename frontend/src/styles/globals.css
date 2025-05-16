@@ -95,6 +95,10 @@ body {
   background-image: #800000;
 }
 
+html {
+  background-color: #800000;
+}
+
 a.normal {
   color: #00245b;
 }

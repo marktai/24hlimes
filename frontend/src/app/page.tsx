@@ -387,7 +387,7 @@ function CardModal() {
           <div className='order-1 sm:order-2 xl:col-span-2 text-[#800000] sm:pb-4'>
             <div
               className={
-                'mt-2 sm:mt-0 flex text-[12px] sm:text-[11px] xl:text-[14px] uppercase ' +
+                'my-2 sm:my-0 flex text-[12px] sm:text-[11px] xl:text-[14px] uppercase ' +
                 (tagPills ? '' : 'hidden')
               }
             >
